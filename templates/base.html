@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>Yulps</title>
 </head>
 <body>
+    {% include 'generals/navbar.html' %}
     {% block content %}
     {% endblock %}
 </body>
