@@ -11,3 +11,8 @@ class SignUpView(FormView):
     template_name = 'users/sign_up.html'
     form_class = SignUpForm
     success_url = '/'
+
+    def form_valid(self, form):
+        """Call the form function save"""
+        form.save()
+        return super().form_valid(form)

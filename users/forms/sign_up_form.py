@@ -15,6 +15,14 @@ class SignUpForm(forms.ModelForm):
         })
     )
 
+    password = forms.CharField(
+        label=_('Contraseña'),
+        min_length=8,
+        widget=forms.TextInput(attrs={
+            'type': 'password'
+        })
+    )
+
     class Meta:
         model = get_user_model()
         fields = [
@@ -24,4 +32,25 @@ class SignUpForm(forms.ModelForm):
             'last_name',
             'password',
         ]
-    
+
+    def clean(self):
+        """Verify password confirmation match"""
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        password_confirmation = cleaned_data.get("password_confirmation")
+
+        if password != password_confirmation:
+            msg = _('Las contraseñas no coinciden')
+            self.add_error('password', msg)
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        """
+        Set user password
+        """
+        user = super().save(commit=False)
+        password = self.cleaned_data.get('password')
+        user.set_password(password)
+        user.save()
+        return user
