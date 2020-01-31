@@ -7,6 +7,17 @@
     align-items: center;
     height: 65px;
     padding: 0 20px;
+    @include shadow;
+
+    ul {
+        display: flex;
+    }
+
+    li {
+        display: block;
+        margin: 0 10px;
+        cursor: pointer;
+    }
 }
 
 .logo {

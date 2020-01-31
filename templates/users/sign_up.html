@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Crea tu cuenta</h1>
-    {{ form }}
+<div class="content-center">
+    <div class="card">
+        <h1>Crea tu cuenta</h1>
+        <form method="post">
+            {% include 'generals/form.html' %}
+        </form>
+    </div>
+</div>
 {% endblock %}

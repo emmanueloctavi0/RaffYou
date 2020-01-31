@@ -2,8 +2,12 @@
 @import 'variables/colors.scss';
 @import 'variables/fonts.scss';
 
+// Mixins
+@import 'layouts/mixins.scss';
+
 // Layouts
 @import 'layouts/general.scss';
+@import 'layouts/contents.scss';
 
 // Navbar
 @import 'layouts/navbar.scss';
