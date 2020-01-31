@@ -1,0 +1,17 @@
+
+.content-input {
+    label {
+        display: block;
+        margin-top: 5px;
+    }
+
+    input {
+        box-sizing: content-box;
+        width: 100%;
+        border-radius: 3px;
+        height: 25px;
+        border: 1px solid $border-color;
+        padding: 0.1em;
+        color: rgb(38, 38, 38)
+    }
+}
