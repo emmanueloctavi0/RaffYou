@@ -1,0 +1,14 @@
+
+.navbar {
+    background-color: $main-color;
+    color: $text-color-soft;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 35px;
+}
