@@ -16,5 +16,23 @@
             "groups": [],
             "user_permissions": []
         }
+    },
+    {
+        "model": "users.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$180000$S6PslNFJM5FO$DLfQ1cOXbY4FrG03B5D07/bBPVqjdI0FxoXkpc0Drjc=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Octavio",
+            "first_name": "Emmanuel Octavio",
+            "last_name": "Mart\u00ednez Calder\u00f3n",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-02-02T02:29:16.745Z",
+            "email": "octavio@raffyou.com",
+            "groups": [],
+            "user_permissions": []
+        }
     }
 ]

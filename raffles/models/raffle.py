@@ -20,7 +20,7 @@ class Raffle(BaseModel):
     )
 
     image = models.ImageField(
-        upload_to='media/images/raffles'    ,
+        upload_to='images/raffles',
         blank=True
     )
 
