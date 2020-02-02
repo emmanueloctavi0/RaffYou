@@ -24,5 +24,14 @@ class Raffle(BaseModel):
         blank=True
     )
 
+    event_date = models.DateTimeField(
+        _('Fecha del evento')
+    )
+
+    event_address = models.CharField(
+        _('Lugar del evento'),
+        max_length=250
+    )
+
     def __str__(self):
         return self.name

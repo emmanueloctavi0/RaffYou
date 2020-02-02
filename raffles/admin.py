@@ -8,7 +8,7 @@ from raffles.models import Raffle
 
 class RaffleAdmin(admin.ModelAdmin):
     """Raffle Admin"""
-    pass
+    list_display = ('name', 'event_date', 'event_address', 'image',)
 
 
 admin.site.register(Raffle, RaffleAdmin)
