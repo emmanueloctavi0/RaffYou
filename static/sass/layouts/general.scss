@@ -9,6 +9,11 @@ body {
     background-color: $body-background;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .card {
     background-color: white;
     // padding: 30px;
@@ -18,7 +23,6 @@ body {
 }
 
 .card-image {
-
     overflow: hidden;
     img {
         max-width: $card-content-max-width;
@@ -26,8 +30,24 @@ body {
     }
 }
 
+.price {
+    color: rgb(28, 75, 146);
+    font-weight: bold;
+}
+
+.card-price {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 5px;
+    .price {
+        grid-column: span 2;
+        text-align: right;
+    }
+}
+
 .card-content {
-    max-width: $card-content-max-width;
+    max-width: calc(#{$card-content-max-width} - 20px);
+    padding: 10px;
 }
 
 .list-card {
@@ -40,6 +60,10 @@ body {
     text-align: center;
 }
 
+// Displays
+.d-block {
+    display: block;
+}
 
 // Paddings
 .p-3 {
