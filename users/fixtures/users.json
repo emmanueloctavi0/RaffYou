@@ -1,0 +1,20 @@
+[
+    {
+        "model": "users.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$180000$S6PslNFJM5FO$DLfQ1cOXbY4FrG03B5D07/bBPVqjdI0FxoXkpc0Drjc=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "octavio",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2020-02-02T02:06:08.242Z",
+            "email": "admin@raffyou.com",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

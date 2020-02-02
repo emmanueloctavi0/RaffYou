@@ -1,3 +1,14 @@
+
+# Django
 from django.contrib import admin
 
-# Register your models here.
+# Models
+from raffles.models import Raffle
+
+
+class RaffleAdmin(admin.ModelAdmin):
+    """Raffle Admin"""
+    pass
+
+
+admin.site.register(Raffle, RaffleAdmin)

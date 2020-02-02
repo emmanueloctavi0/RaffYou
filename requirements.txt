@@ -1,4 +1,5 @@
 django
+Pillow
 libsass
 django-compressor
 django-sass-processor
