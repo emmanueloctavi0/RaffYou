@@ -1,8 +1,8 @@
 
 .navbar {
     background-color: $main-color;
-    color: $text-color-soft;
     display: flex;
+    color: $text-color-soft;
     justify-content: space-between;
     align-items: center;
     height: 65px;
@@ -16,7 +16,11 @@
     li {
         display: block;
         margin: 0 10px;
-        cursor: pointer;
+    }
+
+    a {
+        color: $text-color-soft;
+        text-decoration: none;
     }
 }
 
