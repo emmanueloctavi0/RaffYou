@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Models
-from raffles.models import BaseModel
+from raffles.models import BaseModel, Artist
 
 
 class Raffle(BaseModel):
@@ -32,6 +32,8 @@ class Raffle(BaseModel):
         _('Lugar del evento'),
         max_length=250
     )
+
+    artists = models.ManyToManyField(Artist)
 
     def __str__(self):
         return self.name

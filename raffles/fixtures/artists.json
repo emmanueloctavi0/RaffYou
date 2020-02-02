@@ -1,0 +1,42 @@
+[
+    {
+        "model": "raffles.artist",
+        "pk": 1,
+        "fields": {
+            "created_at": "2020-02-02T04:13:06.712Z",
+            "updated_at": "2020-02-02T04:13:06.712Z",
+            "name": "Los Tigres del Norte",
+            "image": "images/artists/tigres.jpg",
+            "tags": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "raffles.artist",
+        "pk": 2,
+        "fields": {
+            "created_at": "2020-02-02T04:13:28.764Z",
+            "updated_at": "2020-02-02T04:13:52.329Z",
+            "name": "Maroon 5",
+            "image": "images/artists/maroon5.jpg",
+            "tags": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "raffles.artist",
+        "pk": 3,
+        "fields": {
+            "created_at": "2020-02-02T04:13:46.655Z",
+            "updated_at": "2020-02-02T04:13:46.655Z",
+            "name": "Rammstein",
+            "image": "images/artists/rammstein.jpg",
+            "tags": [
+                1,
+                2
+            ]
+        }
+    }
+]

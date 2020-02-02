@@ -1,5 +1,5 @@
 <nav class="navbar">
-    <h1 class="logo"><a href="{% url 'raffles:home' %}">RaffYou</a></h1>
+    <div class="logo"><a href="{% url 'raffles:home' %}">RaffYou</a></div>
     {% if request.user.is_authenticated %}
         <ul>
             <li><a href="#">Mis compras</a></li>
