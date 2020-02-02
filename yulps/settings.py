@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'sass_processor',
 
     # Local apps
-    'users'
+    'users',
+    'raffles',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LOGIN_URL = reverse_lazy('users:login')
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('raffles:home')
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
