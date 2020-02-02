@@ -1,1 +1,53 @@
-[{"model": "raffles.raffle", "pk": 1, "fields": {"created_at": "2020-02-02T03:02:37.256Z", "updated_at": "2020-02-02T04:21:30.998Z", "name": "Rammstein Tour 2020 M\u00e9xico", "description": "After Mexico City selling out quickly, an additional show on September 26, 2020 has been confirmed!", "image": "images/raffles/rammstein_pC4z1tt.jpg", "event_date": "2020-09-27T20:30:00Z", "event_address": "Foro Sol, Mexico City, Mexico", "artists": [1]}}, {"model": "raffles.raffle", "pk": 2, "fields": {"created_at": "2020-02-02T03:05:21.640Z", "updated_at": "2020-02-02T04:21:44.026Z", "name": "Maroon 5. El final", "description": "Foro Sol - M\u00e9xico, DF", "image": "images/raffles/maroon5.jpg", "event_date": "2020-02-23T19:00:00Z", "event_address": "Foro Sol - M\u00e9xico, DF", "artists": [2]}}, {"model": "raffles.raffle", "pk": 3, "fields": {"created_at": "2020-02-02T03:08:28.558Z", "updated_at": "2020-02-02T04:21:18.035Z", "name": "Los Tigres del Norte. Concierto", "description": "La agrupaci\u00f3n, que recientemente hizo un homenaje a Vicente Fern\u00e1ndez con el tema Mujeres Divinas, ya se encuentra en plena preparaci\u00f3n de lo que ser\u00e1n sus pr\u00f3ximas presentaciones por Estados Unidos y M\u00e9xico. Hasta el momento, tienen cerca de 10 fechas confirmadas, incluidas las dos en nuestro pa\u00eds.\r\n\r\nJorge, Hern\u00e1n, \u00d3scar, Eduardo y Luis contin\u00faan con la promoci\u00f3n de su \u00e1lbum Los Tigres del Norte At Folsom Prison; un disco con el video del concierto que ofrecieron durante m\u00e1s de dos horas en el patio de la c\u00e1rcel de California. Con esta presentaci\u00f3n, Los Tigres del Norte marcaron un hecho sin precedentes para una agrupaci\u00f3n de origen mexicano. El cantautor Johnny Cash realiz\u00f3 la misma haza\u00f1a hace 50 a\u00f1os. \r\n\r\nLos Tigres del Norte iniciaron su trayectoria musical en 1968 en su natal Sinaloa. Hasta el momento, cuentan con 55 \u00e1lbumes compuestos por 700 canciones, que incluso han grabado otros int\u00e9rpretes. En total, han vendido m\u00e1s de 30 millones de copias de sus discos y han sido galardonados con 140 discos de platino, 135 de oro y uno de diamante. \r\n\r\nSu \u00e9xito los ha llevado a estar nominados en 15 ocasiones en Los Premio Grammy; lo que los convierte en una de las m\u00e1ximas agrupaciones del g\u00e9nero grupero que ha permanecido por m\u00e1s de 50 a\u00f1os en el gusto del p\u00fablico. Dentro de su trayectoria destaca su participaci\u00f3n en cine con 16 cintas; adem\u00e1s, han explorado otros g\u00e9neros; por ejemplo: su participaci\u00f3n con el grupo Jaguares en el tema Detr\u00e1s de los cerros. Cuentan con el r\u00e9cord de asistencia en la Arena Deportiva de los \u00c1ngeles, convocando a m\u00e1s de 200 mil personas.\r\n\r\nEs por esto y m\u00e1s que Los Jefes de Jefes titularon as\u00ed a su gira, haciendo honor a todo el \u00e9xito que han obtenido desde que iniciaron su carrera.", "image": "images/raffles/tigres.jpg", "event_date": "2020-03-06T20:30:00Z", "event_address": "Auditorio Nacional - Ciudad de M\u00e9xico, DF", "artists": [1]}}]
+[
+    {
+        "model": "raffles.raffle",
+        "pk": 1,
+        "fields": {
+            "created_at": "2020-02-02T03:02:37.256Z",
+            "updated_at": "2020-02-02T04:49:08.595Z",
+            "name": "Rammstein Tour 2020 M\u00e9xico",
+            "description": "After Mexico City selling out quickly, an additional show on September 26, 2020 has been confirmed!",
+            "image": "images/raffles/rammstein_pC4z1tt.jpg",
+            "event_date": "2020-09-27T20:30:00Z",
+            "event_address": "Foro Sol, Mexico City, Mexico",
+            "price": "29.0",
+            "artists": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "raffles.raffle",
+        "pk": 2,
+        "fields": {
+            "created_at": "2020-02-02T03:05:21.640Z",
+            "updated_at": "2020-02-02T04:49:01.725Z",
+            "name": "Maroon 5. El final",
+            "description": "Foro Sol - M\u00e9xico, DF",
+            "image": "images/raffles/maroon5.jpg",
+            "event_date": "2020-02-23T19:00:00Z",
+            "event_address": "Foro Sol - M\u00e9xico, DF",
+            "price": "19.0",
+            "artists": [
+                2
+            ]
+        }
+    },
+    {
+        "model": "raffles.raffle",
+        "pk": 3,
+        "fields": {
+            "created_at": "2020-02-02T03:08:28.558Z",
+            "updated_at": "2020-02-02T04:48:54.228Z",
+            "name": "Los Tigres del Norte. Concierto",
+            "description": "La agrupaci\u00f3n, que recientemente hizo un homenaje a Vicente Fern\u00e1ndez con el tema Mujeres Divinas, ya se encuentra en plena preparaci\u00f3n de lo que ser\u00e1n sus pr\u00f3ximas presentaciones por Estados Unidos y M\u00e9xico. Hasta el momento, tienen cerca de 10 fechas confirmadas, incluidas las dos en nuestro pa\u00eds.\r\n\r\nJorge, Hern\u00e1n, \u00d3scar, Eduardo y Luis contin\u00faan con la promoci\u00f3n de su \u00e1lbum Los Tigres del Norte At Folsom Prison; un disco con el video del concierto que ofrecieron durante m\u00e1s de dos horas en el patio de la c\u00e1rcel de California. Con esta presentaci\u00f3n, Los Tigres del Norte marcaron un hecho sin precedentes para una agrupaci\u00f3n de origen mexicano. El cantautor Johnny Cash realiz\u00f3 la misma haza\u00f1a hace 50 a\u00f1os. \r\n\r\nLos Tigres del Norte iniciaron su trayectoria musical en 1968 en su natal Sinaloa. Hasta el momento, cuentan con 55 \u00e1lbumes compuestos por 700 canciones, que incluso han grabado otros int\u00e9rpretes. En total, han vendido m\u00e1s de 30 millones de copias de sus discos y han sido galardonados con 140 discos de platino, 135 de oro y uno de diamante. \r\n\r\nSu \u00e9xito los ha llevado a estar nominados en 15 ocasiones en Los Premio Grammy; lo que los convierte en una de las m\u00e1ximas agrupaciones del g\u00e9nero grupero que ha permanecido por m\u00e1s de 50 a\u00f1os en el gusto del p\u00fablico. Dentro de su trayectoria destaca su participaci\u00f3n en cine con 16 cintas; adem\u00e1s, han explorado otros g\u00e9neros; por ejemplo: su participaci\u00f3n con el grupo Jaguares en el tema Detr\u00e1s de los cerros. Cuentan con el r\u00e9cord de asistencia en la Arena Deportiva de los \u00c1ngeles, convocando a m\u00e1s de 200 mil personas.\r\n\r\nEs por esto y m\u00e1s que Los Jefes de Jefes titularon as\u00ed a su gira, haciendo honor a todo el \u00e9xito que han obtenido desde que iniciaron su carrera.",
+            "image": "images/raffles/tigres.jpg",
+            "event_date": "2020-03-06T20:30:00Z",
+            "event_address": "Auditorio Nacional - Ciudad de M\u00e9xico, DF",
+            "price": "11.0",
+            "artists": [
+                1
+            ]
+        }
+    }
+]

@@ -2,12 +2,9 @@
 
 {% block content %}
     <h1>Próximos eventos</h1>
-    <ul>
+    <div class="list-card">
         {% for raffle in raffles %}
-            <li>
-                Nombre: {{ raffle.name }}
-                Descripción: {{ raffle.description }}
-            </li>
+            {% include 'raffles/raffle_card.html' %}
         {% endfor%}
-    </ul>
+    </div>
 {% endblock %}

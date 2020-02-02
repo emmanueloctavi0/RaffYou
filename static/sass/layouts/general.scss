@@ -11,11 +11,30 @@ body {
 
 .card {
     background-color: white;
-    padding: 30px;
-    border-radius: 8px;
+    // padding: 30px;
+    border-radius: 2px;
     border: 1px solid $border-color;
     @include shadow;
 }
+
+.card-image {
+
+    overflow: hidden;
+    img {
+        max-width: $card-content-max-width;
+        max-height: 250px;
+    }
+}
+
+.card-content {
+    max-width: $card-content-max-width;
+}
+
+.list-card {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 .text-center {
     text-align: center;
@@ -24,11 +43,11 @@ body {
 
 // Paddings
 .p-3 {
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .pt-2 {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
 }
 
 // Max width

@@ -33,6 +33,12 @@ class Raffle(BaseModel):
         max_length=250
     )
 
+    price = models.DecimalField(
+        _('Precio'),
+        max_digits=3,
+        decimal_places=1
+    )
+
     artists = models.ManyToManyField(Artist)
 
     def __str__(self):
