@@ -3,3 +3,5 @@ Pillow
 libsass
 django-compressor
 django-sass-processor
+python-dotenv
+requests
