@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="content-center">
+    <a href="{% url 'users:spotify_login' %}" class="btn-spotify mb-3"> Iniciar sesión con spotify</a>
     <div class="card max-w-2 p-3">
         {% url 'users:login' as url_login %}
         {% if url_login == request.path %}

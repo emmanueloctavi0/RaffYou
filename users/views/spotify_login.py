@@ -64,7 +64,7 @@ def callback_view(request):
         login(request, user)
         return redirect('raffles:home')
     
-    user = get_user_model().objects.create(
+    user = get_user_model().objects.create_user(
         username=first_name,
         first_name=first_name,
         password=uuid4().hex,
