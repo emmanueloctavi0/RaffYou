@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Próximos eventos</h1>
+    <div class="list-card">
+        {% for raffle in raffles %}
+            {% include 'raffles/raffle_card.html' %}
+        {% endfor%}
+    </div>
+{% endblock %}

@@ -16,7 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
+# Views
+from raffles import views
+
+
 urlpatterns = [
+    path('', views.redirect_home_view),
     path('admin/', admin.site.urls),
-    path('users/', include('users.urls'), name='users'),
-]
+    path('users/', include('users.urls', namespace='users')),
+    path('raffles/', include('raffles.urls', namespace='raffles')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

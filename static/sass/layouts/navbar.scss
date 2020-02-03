@@ -1,0 +1,30 @@
+
+.navbar {
+    background-color: $main-color;
+    display: flex;
+    color: $text-color-soft;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    padding: 0 20px;
+    @include shadow;
+
+    ul {
+        display: flex;
+    }
+
+    li {
+        display: block;
+        margin: 0 10px;
+    }
+
+    a {
+        color: $text-color-soft;
+        text-decoration: none;
+    }
+}
+
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+}

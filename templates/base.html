@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Yulps</title>
+    {% load sass_tags %}
+    <link rel="stylesheet" href="{% sass_src 'sass/index.scss' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <title>RaffYou</title>
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+    {% include 'generals/navbar.html' %}
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

@@ -1,0 +1,9 @@
+
+{% csrf_token %}
+{% for field in form %}
+    <div class="content-input">
+        {{ field.label_tag }} {{ field }}
+        {{ field.errors }}
+    </div>
+{% endfor %}
+{{ form.non_field_errors }}

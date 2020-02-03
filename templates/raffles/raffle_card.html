@@ -1,0 +1,14 @@
+<a class="card" href="#">
+    <div class="card-image">
+        <img src="/media/{{ raffle.image }}" alt="raffle.name">
+    </div>
+
+    <div class="card-content card-price">
+        <p class="text-center">{{ raffle.event_date }}</p>
+        <p class="text-center">
+            <strong class="d-block">{{ raffle.name }}</strong>
+            <small>{{ raffle.event_address }}</small>
+        </p>
+        <p class="price">${{ raffle.price }} MXN</p>
+    </div>
+</a>
