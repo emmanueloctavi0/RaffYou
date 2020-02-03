@@ -3,6 +3,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
+from django.core.mail import send_mail
 
 
 class SignUpForm(forms.ModelForm):
@@ -54,3 +55,23 @@ class SignUpForm(forms.ModelForm):
         user.set_password(password)
         user.save()
         return user
+
+    def send_mail_confirmation(self):
+        """
+        Send mail email confirmation
+        """
+        data = self.cleaned_data
+        email = data.get('email')
+        username = data.get('first_name')
+        msg = (
+            'Hola {}, da click al siguiente enlace para confirmar tu cuenta! \n'
+            'Link: https://raffyou.com/confirmation/?id=adsfasdfSDJFJsmmffkwosl34m2n3'
+        ).format(username)
+
+        send_mail(
+            'Confirma tu correo en RaffYou',
+            msg,
+            'no-reply@raffyou.com',
+            [email],
+            fail_silently=False,
+        )

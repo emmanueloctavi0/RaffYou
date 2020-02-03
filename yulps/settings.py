@@ -152,3 +152,7 @@ STATICFILES_FINDERS = [
 ]
 
 SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
+
+# Mailing
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

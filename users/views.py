@@ -19,6 +19,7 @@ class SignUpView(FormView):
     def form_valid(self, form):
         """Call the form function save"""
         form.save()
+        # form.send_mail_confirmation()
         return super().form_valid(form)
 
 
