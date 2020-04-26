@@ -48,6 +48,7 @@ a {
 .card-content {
     max-width: calc(#{$card-content-max-width} - 20px);
     padding: 10px;
+    margin: 0 auto;
 }
 
 .list-card {

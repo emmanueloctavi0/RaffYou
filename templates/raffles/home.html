@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Próximos eventos</h1>
+    <h1>Para pedir...</h1>
     <div class="list-card">
-        {% for raffle in raffles %}
+        {% for raffle in object_list %}
             {% include 'raffles/raffle_card.html' %}
         {% endfor%}
     </div>

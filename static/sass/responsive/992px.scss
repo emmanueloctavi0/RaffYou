@@ -1,0 +1,10 @@
+@media only screen and (max-width: 992px) {
+    .list-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        margin-bottom: 30px;
+    }
+}
