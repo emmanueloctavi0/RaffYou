@@ -1,19 +1,16 @@
 
 # Django
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 from django.shortcuts import redirect
 
 # Models
 from raffles.models import Raffle
 
 
-class RaffleHomeView(TemplateView):
+class RaffleHomeView(ListView):
     template_name = 'raffles/home.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['raffles'] = Raffle.objects.all()
-        return context
+    model = Raffle
+    paginate_by = 3
 
 
 def redirect_home_view(request):
