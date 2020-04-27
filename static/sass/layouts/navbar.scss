@@ -11,6 +11,7 @@
 
     ul {
         display: flex;
+        align-items: center;
     }
 
     li {
@@ -19,12 +20,16 @@
     }
 
     a {
-        color: $text-color-soft;
-        text-decoration: none;
+        
     }
 }
 
 .logo {
     font-size: 35px;
     font-weight: bold;
+}
+
+.btn-profile {
+    display: flex;
+    align-items: center;
 }

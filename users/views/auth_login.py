@@ -64,6 +64,7 @@ def callback_view(request):
         user.first_name = user_info.get('first_name')
         user.last_name = user_info.get('last_name')
         user.email = user_info.get('email')
+        user.save_profile_picture(user_info['picture']['data']['url'])
         login(request, user)
         return redirect('raffles:home')
     except User.DoesNotExist:
@@ -75,6 +76,6 @@ def callback_view(request):
             email=user_info.get('email'),
             password=uuid4().hex
         )
-
+        user.save_profile_picture(user_info['picture']['data']['url'])
         login(request, user)
         return redirect('raffles:home')

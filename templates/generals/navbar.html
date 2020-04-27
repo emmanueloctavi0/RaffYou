@@ -2,8 +2,10 @@
     <div class="logo"><a href="{% url 'raffles:home' %}">RaffYou</a></div>
     {% if request.user.is_authenticated %}
         <ul>
-            <li><a href="#">Mis compras</a></li>
-            <li><a href="#">{{ request.user.username }}</a></li>
+            <li><a href="#" class="flex items-center">
+                <img class="round mr-1" src="{{ request.user.profile_picture.url }}" alt="profile picture">
+                {{ request.user.first_name }}
+            </a></li>
             <li><a href="{% url 'users:logout' %}">Salir</a></li>
         </ul>
     {% else %}

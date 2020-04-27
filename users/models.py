@@ -1,7 +1,13 @@
+
+# Django
 from django.db import models
+from django.core.files.base import ContentFile
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils.translation import gettext_lazy as _
+
+# Utils
+import requests
 
 
 class CustomUserManager(UserManager):
@@ -57,3 +63,12 @@ class User(AbstractUser):
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    def save_profile_picture(self, url_picture):
+        """Save the profile picture from facebook"""
+        res = requests.get(url_picture)
+        picture = ContentFile(res.content)
+        self.profile_picture.save(
+            f'{self.facebook_id}.jpeg',
+            picture
+        )
