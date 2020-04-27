@@ -11,6 +11,11 @@
 </head>
 <body>
     {% include 'generals/navbar.html' %}
+    {% include 'generals/navbar_mobil.html' %}
+
+    {% block content_top %}
+    {% endblock%}
+
     <div class="content">
         {% block content %}
         {% endblock %}

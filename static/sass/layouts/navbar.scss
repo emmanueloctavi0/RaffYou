@@ -18,9 +18,26 @@
         display: block;
         margin: 0 10px;
     }
+}
 
-    a {
-        
+.navbar-mobil {
+    background-color: $main-color;
+    display: none;
+    color: $text-color-soft;
+    justify-content: space-between;
+    align-items: center;
+    height: 65px;
+    padding: 0 20px;
+    @include shadow;
+
+    ul {
+        display: flex;
+        align-items: center;
+    }
+
+    li {
+        display: block;
+        margin: 0 10px;
     }
 }
 

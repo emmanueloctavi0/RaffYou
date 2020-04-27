@@ -66,6 +66,10 @@ a {
     display: block;
 }
 
+.d-none {
+    display: none;
+}
+
 // Paddings
 .p-3 {
     padding: 2rem;
@@ -100,4 +104,12 @@ a {
 
 .items-center {
     align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.direction-column {
+    flex-direction: column;
 }

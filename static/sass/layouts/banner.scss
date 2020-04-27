@@ -1,0 +1,19 @@
+.banner-container {
+    position: relative;
+}
+
+.banner-content {
+    height: 500px;
+}
+
+.banner-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('/static/img/banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -100;
+}
