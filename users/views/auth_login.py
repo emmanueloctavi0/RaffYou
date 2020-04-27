@@ -10,21 +10,24 @@ from urllib.parse import urlencode
 from users.utils import get_tokens, get_user_info
 
 
-def spotify_login_view(request):
-    """Build the spotify login url"""
+User = get_user_model()
+
+
+def auth_login_view(request):
+    """Build the Facebook login url"""
     # Set cookie
     auth_state = uuid4().hex
     request.session['auth_state'] = auth_state
 
     params = urlencode({
-        'client_id': settings.SPOTIFY_CLIENT_ID,
-        'response_type': 'code',
-        'scope': 'user-read-email',
-        'redirect_uri': settings.SPOTIFY_REDIRECT_URI,
+        'client_id': settings.AUTH_CLIENT_ID,
+        # 'response_type': 'code',
+        # 'scope': 'user-read-email',
+        'redirect_uri': settings.AUTH_REDIRECT_URI,
         'state': auth_state,
     })
 
-    url = 'https://accounts.spotify.com/authorize?' + params
+    url = f'{settings.AUTH_URL}?{params}'
 
     return redirect(url)
 
@@ -47,29 +50,31 @@ def callback_view(request):
     response = get_tokens(code)
 
     if response.status_code != 200:
-        return response('users:signup')
+        return redirect('users:signup')
 
     response = response.json()
 
     user_info = get_user_info(response).json()
 
-    email = user_info['email']
-    first_name = user_info['display_name']
-
-    user = get_user_model().objects.filter(
-        email=email
-    ).first()
-
-    if user:
+    try:
+        user = User.objects.get(
+            facebook_id=user_info['id']
+        )
+        # Update user data
+        user.first_name = user_info.get('first_name')
+        user.last_name = user_info.get('last_name')
+        user.email = user_info.get('email')
         login(request, user)
         return redirect('raffles:home')
-    
-    user = get_user_model().objects.create_user(
-        username=first_name,
-        first_name=first_name,
-        password=uuid4().hex,
-        email=email
-    )
+    except User.DoesNotExist:
+        # Create new user
+        user = User.objects.create_user(
+            first_name=user_info.get('first_name'),
+            last_name=user_info.get('last_name'),
+            facebook_id=user_info.get('id'),
+            email=user_info.get('email'),
+            password=uuid4().hex
+        )
 
-    login(request, user)
-    return redirect('raffles:home')
+        login(request, user)
+        return redirect('raffles:home')

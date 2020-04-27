@@ -4,29 +4,24 @@ from django.conf import settings
 
 import requests
 from base64 import b64encode
+from urllib.parse import urlencode
 
 
 def get_tokens(code):
-    """Get access and refresh token spotify"""
-    payload = {
-        'grant_type': 'authorization_code',
-        'code': code,
-        'redirect_uri': settings.SPOTIFY_REDIRECT_URI
-    }
+    """Get access and refresh token Facebook"""
 
-    auth_client = '{}:{}'.format(
-        settings.SPOTIFY_CLIENT_ID,
-        settings.SPOTIFY_CLIENT_SECRET
-    ).encode()
+    params = urlencode({
+        'client_id': settings.AUTH_CLIENT_ID,
+        'redirect_uri': settings.AUTH_REDIRECT_URI,
+        'client_secret': settings.AUTH_CLIENT_SECRET,
+        'code': code
+    })
 
-    headers = {
-        'Authorization': 'Basic {}'.format(b64encode(auth_client).decode())
-    }
-    response = requests.post(
-        'https://accounts.spotify.com/api/token',
-        data=payload,
-        headers=headers
-    )
+    url = settings.AUTH_TOKEN_URL
+
+    url = f'{url}?{params}'
+
+    response = requests.get(url)
 
     return response
 
@@ -35,8 +30,11 @@ def get_user_info(response):
     """Get the user info"""
     access_token = response['access_token']
 
-    headers = {
-        'Authorization': 'Bearer {}'.format(access_token),
-    }
-    res = requests.get('https://api.spotify.com/v1/me', headers=headers)
+    url = 'https://graph.facebook.com/me/'
+    params = urlencode({
+        'access_token': access_token,
+        'fields': 'first_name,last_name,email,picture,id',
+    })
+    url = f'{url}?{params}'
+    res = requests.get(url)
     return res
