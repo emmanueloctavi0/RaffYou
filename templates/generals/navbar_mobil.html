@@ -1,9 +1,11 @@
 <nav class="navbar-mobil">
-    <div class="logo"><a href="{% url 'raffles:home' %}">RaffYou</a></div>
+    <div class="logo"><a href="{% url 'products:home' %}">RaffYou</a></div>
     {% if request.user.is_authenticated %}
         <ul>
             <li><a href="#" class="flex items-center">
-                <img class="round mr-1" src="{{ request.user.profile_picture.url }}" alt="profile picture">
+                {% if request.user.profile_picture %}
+                    <img class="round mr-1" src="{{ request.user.profile_picture.url }}" alt="profile picture">
+                {% endif %}
                 {{ request.user.first_name }}
             </a></li>
         </ul>

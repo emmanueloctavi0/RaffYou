@@ -66,7 +66,7 @@ def callback_view(request):
         user.email = user_info.get('email')
         user.save_profile_picture(user_info['picture']['data']['url'])
         login(request, user)
-        return redirect('raffles:home')
+        return redirect('products:home')
     except User.DoesNotExist:
         # Create new user
         user = User.objects.create_user(
@@ -78,4 +78,4 @@ def callback_view(request):
         )
         user.save_profile_picture(user_info['picture']['data']['url'])
         login(request, user)
-        return redirect('raffles:home')
+        return redirect('products:home')

@@ -13,7 +13,7 @@ from users.forms import SignUpForm
 class SignUpView(FormView):
     template_name = 'users/sign_up.html'
     form_class = SignUpForm
-    success_url = reverse_lazy('raffles:home')
+    success_url = reverse_lazy('products:home')
 
     def form_valid(self, form):
         """Call the form function save"""
@@ -24,10 +24,10 @@ class SignUpView(FormView):
 
 class LoginViewCustom(LoginView):
     template_name = 'users/sign_up.html'
-    success_url = reverse_lazy('raffles:home')
+    success_url = reverse_lazy('products:home')
 
 
 def logout_view(request):
     if request.user.is_authenticated:
         logout(request)
-    return redirect('raffles:home')
+    return redirect('products:home')

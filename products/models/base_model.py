@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class BaseModel(models.Model):
-    """Raffles base model"""
+    """Products base model"""
     created_at = models.DateTimeField(
         _('Fecha de creación'),
         auto_now_add=True,

@@ -1,0 +1,1 @@
+from .products_home_view import ProductsHomeView, redirect_home_view

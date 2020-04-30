@@ -1,0 +1,13 @@
+<a class="card" href="#{{ product.pk }}">
+    <div class="card-image">
+        <img src="{{ product.image.url }}" alt="product.name">
+    </div>
+
+    <div class="card-content">
+        <p class="text-center">
+            <strong class="d-block">{{ product.name }}</strong>
+            <small>{{ product.event_address }}</small>
+        </p>
+        <p class="price text-center mt-3">${{ product.price }} MXN</p>
+    </div>
+</a>

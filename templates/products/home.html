@@ -7,8 +7,8 @@
 {% block content %}
     <h1>Para pedir...</h1>
     <div class="list-card">
-        {% for raffle in object_list %}
-            {% include 'raffles/simple_card.html' %}
+        {% for product in object_list %}
+            {% include 'products/product_card.html' %}
         {% endfor%}
     </div>
 {% endblock %}

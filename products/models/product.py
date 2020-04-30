@@ -4,11 +4,16 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Models
-from raffles.models import BaseModel, Artist
+from products.models import BaseModel, Provider, CatalogModelBase
 
 
-class Raffle(BaseModel):
-    """Raffle model"""
+class ProductTag(CatalogModelBase):
+    """Provider category or tag"""
+    pass
+
+
+class Product(BaseModel):
+    """Product model"""
     name = models.CharField(
         _('Nombre'),
         max_length=250
@@ -20,16 +25,12 @@ class Raffle(BaseModel):
     )
 
     image = models.ImageField(
-        upload_to='images/raffles',
+        upload_to='images/products',
         blank=True
     )
 
-    event_date = models.DateTimeField(
-        _('Fecha del evento')
-    )
-
-    event_address = models.CharField(
-        _('Lugar del evento'),
+    address = models.CharField(
+        _('Dirección de venta del producto'),
         max_length=250
     )
 
@@ -39,7 +40,12 @@ class Raffle(BaseModel):
         decimal_places=1
     )
 
-    artists = models.ManyToManyField(Artist)
+    provider = models.ForeignKey(
+        Provider,
+        on_delete=models.CASCADE
+    )
+
+    tags = models.ManyToManyField(ProductTag)
 
     def __str__(self):
         return self.name
