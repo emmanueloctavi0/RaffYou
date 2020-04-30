@@ -71,6 +71,10 @@ a {
 }
 
 // Paddings
+.p-1 {
+    padding: 0.5rem;
+}
+
 .p-3 {
     padding: 2rem;
 }
@@ -80,8 +84,24 @@ a {
 }
 
 // margins
+.m-3 {
+    margin: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
 .mb-3 {
     margin-bottom: 40px;
+}
+
+.mt-3 {
+    margin-top: 40px;
 }
 
 .mr-1 {
@@ -95,6 +115,14 @@ a {
 
 .round {
     border-radius: 50%;
+}
+
+.br-8 {
+    border-radius: 8px;
+}
+
+.b-none {
+    border: none;
 }
 
 // Flex
