@@ -10,4 +10,5 @@ app_name = 'products'
 
 urlpatterns = [
     path('', views.ProductsHomeView.as_view(), name='home'),
+    path('pedir/<int:product>/<number>/', views.wa_view, name='wa_view'),
 ]

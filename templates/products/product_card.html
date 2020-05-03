@@ -1,4 +1,7 @@
-<a class="card" href="#{{ product.pk }}">
+{% load product_constants %}
+{% volando_number as volando_number %}
+{% volar_number as volar_number %}
+<a class="card" href="{% url 'products:wa_view' product.id volando_number %}">
     <div class="card-image">
         <img src="{{ product.image.url }}" alt="product.name">
     </div>
