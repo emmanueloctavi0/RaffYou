@@ -4,13 +4,6 @@ body {
     background-color: $body-background;
 }
 
-a, a:link, a:visited,
-a:hover, a:active {
-    text-decoration: none;
-
-    color: inherit;
-}
-
 .price {
     color: rgb(28, 75, 146);
     font-weight: bold;

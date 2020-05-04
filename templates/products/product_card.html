@@ -1,9 +1,12 @@
 {% load product_constants %}
-<a class="card" href="{% url 'products:product-detail' product.id%}">
+<div class="card">
     <img class="card-img-top" src="{{ product.image.url }}" alt="product.name">
 
     <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">{{ product.price }}</p>
+        <p class="card-text price">${{ product.price }}</p>
+        <a href="{% url 'products:product-detail' product.id%}" class="btn btn-primary text-white">
+            Agregar al carrito
+        </a>
     </div>
-</a>
+</div>
