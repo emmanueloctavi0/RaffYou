@@ -36,8 +36,8 @@ class Product(BaseModel):
 
     price = models.DecimalField(
         _('Precio'),
-        max_digits=3,
-        decimal_places=1
+        max_digits=6,
+        decimal_places=2
     )
 
     provider = models.ForeignKey(

@@ -1,7 +1,25 @@
 [
     {
         "model": "users.user",
-        "pk": 7,
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$180000$qaCMad5EHC1a$3Z1P44OUTDFdGy25HIceXFTmvMZW7s+FR0cXobNoEgE=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2020-02-02T02:06:08.242Z",
+            "email": "admin@raffyou.com",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
         "fields": {
             "password": "pbkdf2_sha256$180000$qaCMad5EHC1a$3Z1P44OUTDFdGy25HIceXFTmvMZW7s+FR0cXobNoEgE=",
             "last_login": null,
@@ -12,7 +30,7 @@
             "is_staff": true,
             "is_active": true,
             "date_joined": "2020-02-02T02:06:08.242Z",
-            "email": "admin@raffyou.com",
+            "email": "octavio@raffyou.com",
             "groups": [],
             "user_permissions": []
         }
