@@ -9,7 +9,7 @@ from rest_framework import routers
 from carts.views import CartProductViewSet
 
 router = routers.DefaultRouter()
-router.register('', CartProductViewSet)
+router.register('products', CartProductViewSet)
 
 app_name = 'carts'
 

@@ -10,4 +10,8 @@ class CartProductSerializer(serializers.ModelSerializer):
     """Cart serializer"""
     class Meta:
         model = CartProduct
-        fields = '__all__'
+        fields = [
+            'id',
+            'amount',
+            'product',
+        ]
