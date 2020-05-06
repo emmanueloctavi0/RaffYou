@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # 3th libs
     'sass_processor',
+    'rest_framework',
 
     # Local apps
     'users',
