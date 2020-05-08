@@ -29,6 +29,13 @@ class Cart(BaseModel):
             models.Sum('price')
         )['price__sum'] or 0
 
+    @property
+    def count_items(self):
+        """Total items in the cart"""
+        return self.cartproduct_set.aggregate(
+            models.Sum('amount')
+        )['amount__sum'] or 0
+
     def __str__(self):
         return f'{self.user.email} - ${self.total_price}'
 
@@ -57,3 +64,11 @@ class CartProduct(BaseModel):
 
     def __str__(self):
         return f'{self.product.name} - {self.amount} - ${self.sub_total_price}'
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['product', 'cart'],
+                name='unique_product_by_cart'
+            )
+        ]
