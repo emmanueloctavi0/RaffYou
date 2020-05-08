@@ -1,2 +1,2 @@
-const ADD_PRODUCT_URL = '/v1/carts/products/';
+const ADD_PRODUCT_URL = '/carrito/api/products/';
 const LOGIN_URL = '/usuarios/login/';

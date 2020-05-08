@@ -15,5 +15,5 @@ urlpatterns = [
     path('usuarios/', include('users.urls', namespace='users')),
     path('productos/', include('products.urls', namespace='products')),
     # API
-    path('v1/carts/', include('carts.urls')),
+    path('carrito/', include('carts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

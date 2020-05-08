@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content_top %}
-    {% include 'generals/banner.html' %}
+    {% if not request.GET.q %}
+        {% include 'generals/banner.html' %}
+    {% endif %}
 {% endblock%}
 
 {% block content %}
