@@ -12,8 +12,8 @@ from products import views
 urlpatterns = [
     path('', views.redirect_home_view),
     path('admin/', admin.site.urls),
-    path('users/', include('users.urls', namespace='users')),
-    path('products/', include('products.urls', namespace='products')),
+    path('usuarios/', include('users.urls', namespace='users')),
+    path('productos/', include('products.urls', namespace='products')),
     # API
     path('v1/carts/', include('carts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
