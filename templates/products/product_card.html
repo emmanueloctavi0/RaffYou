@@ -8,8 +8,8 @@
         </div>
     </a>
     <p class="text-center card-footer">
-        <a href="{% url 'products:product-detail' product.id%}" class="btn btn-primary text-white">
+        <button data-product_id="{{ product.id }}" class="btn btn-primary text-white" onclick="addProductButton(this)">
             Agregar al carrito
-        </a>
+        </button>
     </p>
 </div>
