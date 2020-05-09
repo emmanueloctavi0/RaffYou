@@ -4,11 +4,7 @@
         <div class="card-body text-center">
             <h5 class="card-title text-primary font-weight-bold">{{ product.name }}</h5>
             <p class="card-text price">${{ product.price }}</p>
+            <small>{{ product.description }}</small>
         </div>
     </a>
-    <p class="text-center card-footer">
-        <button data-product_id="{{ product.id }}" class="btn btn-primary text-white" onclick="addProductButton(this)">
-            Agregar al carrito
-        </button>
-    </p>
 </div>

@@ -53,7 +53,7 @@ class CartProduct(BaseModel):
         on_delete=models.CASCADE
     )
 
-    amount = models.IntegerField(
+    amount = models.PositiveIntegerField(
         _('Número de productos en el carrito'),
         default=1
     )

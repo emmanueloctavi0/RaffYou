@@ -35,7 +35,10 @@ async function addProductButton(button) {
 
     try {
         let res = await addProduct({product: product_id});
-        showMessage('¡Se ha agreado un producto a tu carrito!');
+        showMessage(
+            `¡Se ha agreado un producto a tu
+            <a class="font-weight-bold stretched-link" href="/carrito/">carrito</a>!
+        `);
         button.removeAttribute('disabled');
     } catch (error) {
         if (error.code !== 403) {

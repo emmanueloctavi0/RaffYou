@@ -16,5 +16,6 @@ app_name = 'carts'
 
 urlpatterns = [
     path('', views.cart_view, name='index'),
+    path('delete/<int:cart_product>/', views.cart_product_delete_view, name='delete'),
     path('api/', include(router.urls)),
 ]

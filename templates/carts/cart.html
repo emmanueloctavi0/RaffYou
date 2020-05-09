@@ -2,41 +2,22 @@
 
 {% block content %}
     <h1>Carrito</h1>
-    {% for cart_product in cart_products %}
-        <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="{{ cart_product.product.image.url}}" class="card-img" alt="cart_product.product.name">
-                </div>
-                <div class="col-md-4 p-3 d-flex flex-column justify-content-center">
-                    <h4 class="card-title font-weight-bold">{{ cart_product.product.name }}</h4>
-                    <p class="card-text">
-                        {{ cart_product.product.description }}
-                    </p>
-                    <p class="card-text">
-                        <small class="text-success">
-                            Envío a travéz de <strong>Voy volando</strong>
-                        </small>
-                    </p>
-                    <p class="card-text">
-                        <a href="#">
-                            <small class="text-info">Eliminar</small>
-                        </a>
-                    </p>
-                </div>
-                <div class="col-md-2 py-3 d-flex flex-column justify-content-center align-items-center">
-                    <form>
-                        <div class="form-row align-items-center">
-                          <div class="col-6 mx-auto">
-                            <input class="form-control text-center" type="number" name="amount" id="amount" value="{{ cart_product.amount }}">
-                          </div>
-                        </div>
-                      </form>
-                </div>
-                <div class="col-md-2 py-3 d-flex flex-column justify-content-center align-items-center">
-                    <div class="card-text"><strong>${{ cart_product.sub_total_price }}</strong></div>
-                </div>
+    {% if cart_products %}
+        {% for cart_product in cart_products %}
+            {% include 'carts/cart_product_card.html' %}
+        {% endfor %}
+        <div class="row">
+            <div class="col text-right">
+                <a class="btn btn-success" href="#" role="button">Continuar con la compra</a>
             </div>
         </div>
-    {% endfor %}
+    {% else %}
+        <h4 class="my-5">Aún no tienes productos en tu carrito</h4>
+    {% endif %}
+    <h3 class="mt-5">Te podría interesar...</h3>
+    <div class="card-deck">
+        {% for product in products %}
+            {% include 'products/product_card_simple.html' %}
+        {% endfor%}
+    </div>
 {% endblock %}
