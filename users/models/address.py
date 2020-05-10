@@ -15,14 +15,10 @@ User = get_user_model()
 class Address(BaseModel):
     """The User address"""
 
-    class AddressProfile(models.IntegerChoices):
-        COMMERCIAL = 1, _('Trabajo')
-        RESIDENTIAL = 2, _('Casa')
-
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     name = models.CharField(
-        _('Nombre y apellido de quien recibe'),
+        _('Nombre y apellido'),
         max_length=250
     )
 
@@ -74,16 +70,12 @@ class Address(BaseModel):
         blank=True
     )
 
-    address_profile = models.IntegerField(
-        _('¿Es tu trabajo o tu casa?'),
-        choices=AddressProfile.choices
-    )
-
     telephone = models.CharField(
         _('Teléfono de contacto'),
         max_length=20,
     )
 
     references = models.TextField(
-        _('Indicaciones adicionales para entregar tus compras en esta dirección')
+        _('Indicaciones adicionales para entregar tus compras en esta dirección'),
+        max_length=500
     )

@@ -1,6 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Direcciones de envío</h1>
-    {{ form }}
+    <div class="row">
+        <div class="col-12">
+            <h1 class="my-4">Agregar dirección</h1>
+            <form class="card shadow p-4 {% if form.errors %} was-validated {% endif %}" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.name %}
+                </div>
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.zip_code col=4 %}
+                </div>
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.state col=4 %}
+                    {% include 'generals/input_form.html' with field=form.city col=4 %}
+                </div>
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.colony col=8 %}
+                </div>
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.street_name col=4 %}
+                    {% include 'generals/input_form.html' with field=form.street_number col=4 %}
+                </div>
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.internal_number col=4 %}
+                </div>
+                <small for="id_between_street1">¿Entre qué calles está? (opcional)</small>
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.between_street1 col=4 %}
+                    {% include 'generals/input_form.html' with field=form.between_street2 col=4 %}
+                </div>
+                <div class="form-row">
+                    {% include 'generals/input_form.html' with field=form.telephone col=4 %}
+                </div>
+                <div class="form-row">
+                    {% include 'generals/textarea_form.html' with field=form.references col=8 %}
+                </div>
+                <div class="text-center pt-2">
+                    <button class="btn btn-success" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
+
