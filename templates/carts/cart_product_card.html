@@ -1,10 +1,16 @@
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="{{ cart_product.product.image.url}}" class="card-img" alt="cart_product.product.name">
+            <a href="{% url 'products:product-detail' cart_product.product.id %}">
+                <img src="{{ cart_product.product.image.url}}" class="card-img" alt="cart_product.product.name">
+            </a>
         </div>
         <div class="col-md-4 p-3 d-flex flex-column justify-content-center">
-            <h4 class="card-title font-weight-bold">{{ cart_product.product.name }}</h4>
+            <h4 class="card-title font-weight-bold">
+                <a href="{% url 'products:product-detail' cart_product.product.id %}">
+                    {{ cart_product.product.name }}
+                </a>
+            </h4>
             <p class="card-text">
                 {{ cart_product.product.description }}
             </p>
@@ -17,14 +23,13 @@
             <form action="{% url 'carts:delete' cart_product.id %}" method="post">
                 {% csrf_token %}
                 <input class="text-info p-0 bg-white border-0" type="submit" value="Eliminar">
-                <!-- <small >Eliminar</small> -->
             </form>
         </div>
         <div class="col-md-2 py-3 d-flex flex-column justify-content-center align-items-center">
             <form>
                 <div class="form-row align-items-center">
                 <div class="col-6 mx-auto">
-                    <input class="form-control text-center" type="number" name="amount" id="amount" value="{{ cart_product.amount }}">
+                    <input readonly class="form-control text-center" type="number" name="amount" id="amount" value="{{ cart_product.amount }}">
                 </div>
                 </div>
             </form>

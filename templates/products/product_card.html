@@ -6,9 +6,10 @@
             <p class="card-text price">${{ product.price }}</p>
         </div>
     </a>
-    <p class="text-center card-footer">
-        <button data-product_id="{{ product.id }}" class="btn btn-primary text-white" onclick="addProductButton(this)">
+    <form class="cart-product-widget text-center card-footer">
+        <input type="hidden" name="product" value="{{ product.id }}">
+        <button class="btn btn-primary text-white" type="submit">
             Agregar al carrito
         </button>
-    </p>
+    </form>
 </div>

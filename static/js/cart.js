@@ -29,15 +29,18 @@ async function addProduct(body) {
     return await res.json()
 }
 
-async function addProductButton(button) {
-    const product_id = parseInt(button.dataset.product_id);
-    button.setAttribute('disabled', true);
 
+async function addProductWidget(ev) {
+    ev.preventDefault();
+    const button = ev.target.querySelector('[type=submit]');
+    button.setAttribute('disabled', true);
+    const formData = new FormData(ev.target);
+    const data = Object.fromEntries(formData);
     try {
-        let res = await addProduct({product: product_id});
+        await addProduct(data);
         showMessage(
             `¡Se ha agreado un producto a tu
-            <a class="font-weight-bold stretched-link" href="/carrito/">carrito</a>!
+            <a class="font-weight-bold" href="/carrito/">carrito</a>!
         `);
         button.removeAttribute('disabled');
     } catch (error) {
@@ -46,3 +49,7 @@ async function addProductButton(button) {
         }
     }
 }
+
+document.querySelectorAll('.cart-product-widget').forEach(element => {
+    element.addEventListener('submit', addProductWidget);
+});
