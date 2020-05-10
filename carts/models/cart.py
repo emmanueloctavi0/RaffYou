@@ -5,7 +5,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Models
-from products.models import BaseModel, Product
+from core.models import BaseModel
+from products.models import Product
 
 User = get_user_model()
 

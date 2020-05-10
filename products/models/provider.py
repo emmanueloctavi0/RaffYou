@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 # Models
-from products.models import BaseModel, CatalogModelBase
+from core.models import CatalogModelBase, BaseModel
 
 
 class Provider(BaseModel):

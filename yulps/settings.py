@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Local apps
+    'core',
     'users',
     'products',
     'carts',
