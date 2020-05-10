@@ -25,9 +25,11 @@ class Cart(BaseModel):
     @property
     def total_price(self):
         """Cart total price"""
-        return self.products.aggregate(
-            models.Sum('price')
-        )['price__sum'] or 0
+        cart_products = self.cartproduct_set.all()
+        price = 0
+        for cart_product in cart_products:
+            price += cart_product.sub_total_price
+        return price
 
     @property
     def count_items(self):

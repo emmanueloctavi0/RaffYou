@@ -19,7 +19,6 @@
                     Envío a travéz de <strong>Voy volando</strong>
                 </small>
             </p>
-            
             <form action="{% url 'carts:delete' cart_product.id %}" method="post">
                 {% csrf_token %}
                 <input class="text-info p-0 bg-white border-0" type="submit" value="Eliminar">

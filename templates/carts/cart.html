@@ -6,6 +6,18 @@
         {% for cart_product in cart_products %}
             {% include 'carts/cart_product_card.html' %}
         {% endfor %}
+        <div class="card mb-3">
+                <div class="d-flex align-items-end flex-column p-3">
+                    <h6>Productos ({{ request.user.cart.count_items }}):
+                        $ {{ request.user.cart.total_price }}
+                    </h6>
+                    <p class="text-success">Envío a travéz de <strong>Voy volando</strong></p>
+                    <h5>
+                        Total (sin incluir el precio del repartidor):
+                        $ {{ request.user.cart.total_price }}
+                    </h5>
+                </div>
+        </div>
         <div class="row">
             <div class="col text-right">
                 <a class="btn btn-success" href="#" role="button">Continuar con la compra</a>
