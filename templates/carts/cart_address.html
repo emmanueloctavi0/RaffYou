@@ -33,6 +33,12 @@
         </div>
     {% endfor%}
     <div class="d-flex justify-content-end">
-        <a class="btn btn-success" href="{% url 'users:address-create' %}?next={% url 'carts:cart-address' %}">Envíar a otra dirección</a>
+        <a class="btn btn-success" href="{% url 'users:address-create' %}?next={% url 'carts:cart-address' %}">
+            {% if addresses %}
+                Envíar a otra dirección
+            {% else %}
+                Agregar una dirección
+            {% endif %}
+        </a>
     </div>
 {% endblock %}

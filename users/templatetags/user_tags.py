@@ -14,8 +14,8 @@ register = template.Library()
 @register.simple_tag(takes_context=True)
 def volando_whatsapp(context, address_id):
     """Build an url to send a whatsapp"""
-    url = 'https://wa.me/525548161007?text='
-    # url = 'https://wa.me/529511302570?text='
+    # url = 'https://wa.me/525548161007?text='
+    url = 'https://wa.me/529511302570?text='
     user = context['request'].user
 
     cart_products = user.cart.cartproduct_set.all()

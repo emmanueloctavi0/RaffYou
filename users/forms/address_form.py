@@ -10,7 +10,7 @@ from users.models import Address
 class AddressForm(forms.ModelForm):
 
     references = forms.CharField(
-        label=_('Indicaciones adicionales para entregar tus compras en esta dirección'),
+        label=_('Ayuda al repartido a encontrar tu domicilio o el producto que necesitas'),
         min_length=15
     )
 
