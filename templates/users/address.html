@@ -1,41 +1,42 @@
 {% extends 'base.html' %}
+{% load custom_form %}
 
 {% block content %}
     <div class="row">
         <div class="col-12">
             <h1 class="my-4">Agregar dirección</h1>
-            <form class="card shadow p-4 {% if form.errors %} was-validated {% endif %}" method="post">
+            <form class="card shadow p-4" method="post">
                 {% csrf_token %}
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.name %}
+                    {% input_form form.name %}
                 </div>
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.zip_code col=4 %}
+                    {% input_form form.zip_code 4 %}
                 </div>
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.state col=4 %}
-                    {% include 'generals/input_form.html' with field=form.city col=4 %}
+                    {% input_form form.state 4 %}
+                    {% input_form form.city 4 %}
                 </div>
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.colony col=8 %}
+                    {% input_form form.colony %}
                 </div>
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.street_name col=4 %}
-                    {% include 'generals/input_form.html' with field=form.street_number col=4 %}
+                    {% input_form form.street_name 4 %}
+                    {% input_form form.street_number 4 %}
                 </div>
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.internal_number col=4 %}
+                    {% input_form form.internal_number 4 %}
                 </div>
                 <small for="id_between_street1">¿Entre qué calles está? (opcional)</small>
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.between_street1 col=4 %}
-                    {% include 'generals/input_form.html' with field=form.between_street2 col=4 %}
+                    {% input_form form.between_street1 4 %}
+                    {% input_form form.between_street2 4 %}
                 </div>
                 <div class="form-row">
-                    {% include 'generals/input_form.html' with field=form.telephone col=4 %}
+                    {% input_form form.telephone 4 %}
                 </div>
                 <div class="form-row">
-                    {% include 'generals/textarea_form.html' with field=form.references col=8 %}
+                    {% textarea_form form.references %}
                 </div>
                 <div class="text-center pt-2">
                     <button class="btn btn-success" type="submit">Enviar</button>

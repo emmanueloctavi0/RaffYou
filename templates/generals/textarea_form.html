@@ -1,13 +1,12 @@
-<div class="form-group col-md-{{ col|default:"8" }}">
+<div class="form-group col-md-{{ col }}">
     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
     <textarea
         name="{{ field.name }}"
         class="form-control"
         id="{{ field.id_for_label }}"
-        cols="{{ cols|default:"57"}}"
+        cols="{{ cols }}"
         {% if field.field.required %} required {% endif %}
-        value="{{ field.value|default_if_none:"" }}"
-        rows="{{ rows|default:"4"}}">{{ field.placeholder }}</textarea>
+        rows="{{ rows }}">{{ value }}</textarea>
     {% if field.errors.0 %}
         <div class="invalid-feedback">
             {{ field.errors.0 }}

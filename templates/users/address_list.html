@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h4>Direcciones</h4>
+    {% if object_list %}
+        {% for address in object_list %}
+            <div class="card p-3 mb-3">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6>{{ address.street_name }} {{ address.street_number }}</h6>
+                        <p class="text-muted">
+                            ({{ address.zip_code }}) {{ address.city }} {{ address.colony }}
+                            <br>
+                            {{ address.name }}-{{ address.telephone }}
+                            <br>
+                            {{ address.between_street1 }}-{{ address.between_street2 }}
+                            <br>
+                            {{ address.references }}
+                        </p>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <a class="btn btn-danger text-white">Eliminar</a>
+                        <a href="{% url 'users:address-update' address.id %}" class="btn btn-success" href="">Editar</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor%}
+    {% else %}
+    <h4 class="my-5">Aún no tienes direcciones registradas</h4>
+    {% endif %}
+    <a class="btn btn-info" href="{% url 'users:address-create' %}">Añadir dirección</a>
+{% endblock %}

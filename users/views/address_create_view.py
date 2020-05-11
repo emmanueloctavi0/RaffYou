@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from users.forms import AddressForm
 
 
-class AddressView(LoginRequiredMixin, FormView):
+class AddressCreateView(LoginRequiredMixin, FormView):
     form_class = AddressForm
     template_name = 'users/address.html'
     success_url = '/'
