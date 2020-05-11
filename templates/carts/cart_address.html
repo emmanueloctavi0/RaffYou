@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load user_tags %}
+
+{% block content %}
+    <h1 class="mt-3 mb-0">
+        ¿A dónde lo enviamos?
+    </h1>
+    <small class="mb-3 d-block text-secondary">(El envío se hará a travéz de voy volando con la app de Whatsapp)</small>
+    {% for address in addresses %}
+        <div class="card p-3 mb-3">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h6>{{ address.street_name }} {{ address.street_number }}</h6>
+                    <p class="text-muted">
+                        ({{ address.zip_code }}) {{ address.city }} {{ address.colony }}
+                        <br>
+                        {{ address.name }}-{{ address.telephone }}
+                        <br>
+                        {{ address.between_street1 }}-{{ address.between_street2 }}
+                        <br>
+                        {{ address.references }}
+                    </p>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a href="{% volando_whatsapp address.id %}" target="_blank" class="btn btn-success">Envíar a ésta dirección</a>
+                    <a
+                        class="text-info d-block mt-3"
+                        href="{% url 'users:address-update' address.id %}?next={% url 'carts:cart-address' %}"
+                        >Editar
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor%}
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-success" href="{% url 'users:address-create' %}?next={% url 'carts:cart-address' %}">Envíar a otra dirección</a>
+    </div>
+{% endblock %}

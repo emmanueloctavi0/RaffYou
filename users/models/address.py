@@ -38,7 +38,7 @@ class Address(BaseModel):
     )
 
     colony = models.CharField(
-        _('Colonia / Asentamiento'),
+        _('Barrio / Colonia / Asentamiento'),
         max_length=255
     )
 
@@ -76,6 +76,20 @@ class Address(BaseModel):
     )
 
     references = models.TextField(
-        _('Indicaciones adicionales para entregar tus compras en esta dirección'),
+        _('Ayuda al repartido a encontrar tu domicilio o el producto que necesitas'),
         max_length=500
     )
+
+    @property
+    def full_address(self):
+        return (
+            f'*Calle:* {self.street_name}\n'
+            f'*Número:* {self.internal_number}\n'
+            f'*Barrio:* {self.colony}\n'
+            f'*A la persona:* {self.name}\n'
+            f'*Teléfono:* {self.telephone}\n'
+            f'*Notas:* {self.references}\n'
+        )
+
+    def __str__(self):
+        return f'{self.user} - {self.zip_code}'
