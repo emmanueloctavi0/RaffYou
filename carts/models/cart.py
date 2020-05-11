@@ -6,7 +6,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Models
 from core.models import BaseModel
+from users.models import Address
 from products.models import Product
+
 
 User = get_user_model()
 
@@ -21,6 +23,12 @@ class Cart(BaseModel):
         Product,
         blank=True,
         through='CartProduct'
+    )
+
+    address = models.ForeignKey(
+        Address,
+        on_delete=models.DO_NOTHING,
+        null=True
     )
 
     @property

@@ -18,3 +18,10 @@ class AddressCreateView(LoginRequiredMixin, FormView):
         form.instance.user = self.request.user
         form.save()
         return super().form_valid(form)
+
+    def get_success_url(self):
+        """If exists param 'next' redirect to tha path"""
+        return self.request.GET.get(
+            'next',
+            super().get_success_url()
+        )

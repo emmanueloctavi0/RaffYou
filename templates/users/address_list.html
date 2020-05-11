@@ -31,6 +31,8 @@
     {% else %}
     <h4 class="my-5">Aún no tienes direcciones registradas</h4>
     {% endif %}
-    <a class="btn btn-info" href="{% url 'users:address-create' %}">Añadir dirección</a>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-info" href="{% url 'users:address-create' %}">Añadir dirección</a>
+    </div>
     {% yes_no_modal '¿Está seguro que quiere eliminar la dirección? '%}
 {% endblock %}

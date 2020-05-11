@@ -19,3 +19,10 @@ class AddressUpdateView(UpdateView):
         return Address.objects.filter(
             user=self.request.user
         )
+
+    def get_success_url(self):
+        """If exists param 'next' redirect to tha path"""
+        return self.request.GET.get(
+            'next',
+            super().get_success_url()
+        )
