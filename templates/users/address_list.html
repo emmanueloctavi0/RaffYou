@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load html_elements %}
 
 {% block content %}
-    <h4>Direcciones</h4>
+    <h4 class="my-3">Direcciones</h4>
     {% if object_list %}
         {% for address in object_list %}
             <div class="card p-3 mb-3">
@@ -19,7 +20,9 @@
                         </p>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <a class="btn btn-danger text-white">Eliminar</a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-to_link="{% url 'users:address-update' address.id %}" data-target="#yesNoModal">
+                            Eliminar
+                        </button>
                         <a href="{% url 'users:address-update' address.id %}" class="btn btn-success" href="">Editar</a>
                     </div>
                 </div>
@@ -29,4 +32,6 @@
     <h4 class="my-5">Aún no tienes direcciones registradas</h4>
     {% endif %}
     <a class="btn btn-info" href="{% url 'users:address-create' %}">Añadir dirección</a>
+    
+    {% yes_no_modal '¿Está seguro que quiere eliminar la dirección? '%}
 {% endblock %}

@@ -47,3 +47,10 @@ def textarea_form(context, field, col=8, cols=57, rows=4):
         'rows': rows,
         'required': field.field.required
     }
+
+
+@register.inclusion_tag('generals/yes_no_modal.html', takes_context=True)
+def yes_no_modal(context, msg):
+    return {
+        'msg': msg,
+    }
