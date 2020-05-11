@@ -14,7 +14,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <a id="toLink" href="#" class="btn btn-danger">Eliminar</a>
+                <form id="toLink" action="#" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                </form>
             </div>
         </div>
     </div>
