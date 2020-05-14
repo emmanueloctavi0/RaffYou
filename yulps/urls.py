@@ -10,7 +10,7 @@ from products import views
 
 
 urlpatterns = [
-    path('', views.redirect_home_view),
+    path('', include('core.urls')),
     path('admin/', admin.site.urls),
     path('usuarios/', include('users.urls', namespace='users')),
     path('productos/', include('products.urls', namespace='products')),

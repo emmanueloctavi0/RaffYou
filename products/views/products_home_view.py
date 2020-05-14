@@ -1,7 +1,6 @@
 
 # Django
 from django.views.generic import ListView
-from django.shortcuts import redirect
 from django.db.models import Q
 from django.utils.datastructures import MultiValueDictKeyError
 
@@ -26,7 +25,3 @@ class ProductsHomeView(ListView):
             Q(tags__description__icontains=query) |
             Q(description__icontains=query)
         )
-
-
-def redirect_home_view(request):
-    return redirect('products:home')
