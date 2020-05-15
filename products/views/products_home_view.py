@@ -14,6 +14,7 @@ class ProductsHomeView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        queryset = queryset.order_by('-created_at')
         try:
             query = self.request.GET['q']
         except MultiValueDictKeyError:

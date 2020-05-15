@@ -65,7 +65,7 @@ class Address(BaseModel):
     )
 
     between_street2 = models.CharField(
-        _('Calle 1'),
+        _('Calle 2'),
         max_length=255,
         blank=True
     )
@@ -84,7 +84,7 @@ class Address(BaseModel):
     def full_address(self):
         return (
             f'*Calle:* {self.street_name}\n'
-            f'*Número:* {self.internal_number}\n'
+            f'*Número:* {self.street_number}\n'
             f'*Barrio:* {self.colony}\n'
             f'*A la persona:* {self.name}\n'
             f'*Teléfono:* {self.telephone}\n'
