@@ -16,6 +16,9 @@ from django.urls import reverse_lazy
 from dotenv import load_dotenv
 load_dotenv()
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -29,8 +32,18 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.getenv('DEBUG', True) == 'False':
     DEBUG = False
+
+    sentry_sdk.init(
+        dsn=os.getenv('SENTRY_URL'),
+        integrations=[DjangoIntegration()],
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
 else:
     DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 

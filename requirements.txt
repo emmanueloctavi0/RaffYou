@@ -1,8 +1,9 @@
-django
-Pillow
-libsass
-django-compressor
-django-sass-processor
-python-dotenv
-requests
-djangorestframework
+django==3.0.6
+Pillow==7.1.2
+libsass==0.20.0
+django-compressor==2.4
+django-sass-processor==0.8
+python-dotenv==0.13.0
+requests==2.23.0
+djangorestframework==3.11.0
+sentry-sdk==0.14.4
