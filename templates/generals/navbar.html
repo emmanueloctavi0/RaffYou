@@ -9,7 +9,9 @@
             {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{request.user.profile_picture.url }}" width="25" height="25" class="d-inline-block align-top rounded-circle" alt="">
+                        {% if request.user.profile_picture %}
+                            <img src="{{request.user.profile_picture.url }}" width="25" height="25" class="d-inline-block align-top rounded-circle" alt="">
+                        {% endif %}
                         Mi cuenta
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
