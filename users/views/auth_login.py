@@ -22,7 +22,7 @@ def auth_login_view(request):
     params = urlencode({
         'client_id': settings.AUTH_CLIENT_ID,
         # 'response_type': 'code',
-        # 'scope': 'user-read-email',
+        'scope': 'public_profile,email',
         'redirect_uri': settings.AUTH_REDIRECT_URI,
         'state': auth_state,
     })
@@ -58,7 +58,7 @@ def callback_view(request):
 
     try:
         user = User.objects.get(
-            facebook_id=user_info['id']
+            email=user_info.get('email')
         )
         # Update user data
         user.first_name = user_info.get('first_name')
