@@ -32,7 +32,8 @@ class Product(BaseModel):
 
     address = models.CharField(
         _('Dirección de venta del producto'),
-        max_length=250
+        max_length=250,
+        blank=True
     )
 
     price = models.DecimalField(
@@ -43,10 +44,12 @@ class Product(BaseModel):
 
     provider = models.ForeignKey(
         Provider,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
     )
 
-    tags = models.ManyToManyField(ProductTag)
+    tags = models.ManyToManyField(ProductTag, blank=True)
 
     def __str__(self):
         return self.name
