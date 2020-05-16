@@ -22,7 +22,11 @@
                     </p>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <a href="{% volando_whatsapp address.id %}" target="_blank" class="btn btn-success">Envíar a ésta dirección</a>
+                    <form action="{% url 'carts:cart-address' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="address" value="{{ address.id }}">
+                        <button class="btn btn-success" type="submit">Enviar a ésta dirección</button>
+                    </form>
                     <a
                         class="text-info d-block mt-3"
                         href="{% url 'users:address-update' address.id %}?next={% url 'carts:cart-address' %}"

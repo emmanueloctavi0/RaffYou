@@ -68,6 +68,7 @@ class User(AbstractUser):
         """Save the profile picture from facebook"""
         res = requests.get(url_picture)
         picture = ContentFile(res.content)
+        self.profile_picture.delete()
         self.profile_picture.save(
             f'{self.facebook_id}.jpeg',
             picture
