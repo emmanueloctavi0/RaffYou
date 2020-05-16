@@ -22,7 +22,7 @@ def volando_whatsapp(context, address_id):
     products_text = ''
 
     for cart_product in cart_products:
-        products_text += f'_{cart_product.amount} {cart_product.product.name}_\n'
+        products_text += f'_{cart_product.amount} {cart_product.product.product.name} {cart_product.product.description}_\n'
 
     try:
         address = user.address_set.get(id=address_id)
