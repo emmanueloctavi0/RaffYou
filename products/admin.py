@@ -3,12 +3,24 @@
 from django.contrib import admin
 
 # Models
-from products.models import Product, ProductTag, Provider
+from products.models import (
+    Product, ProductTag, ProductPrice,
+    Provider
+)
+
+
+class PriceInline(admin.StackedInline):
+    model = ProductPrice
+    extra = 1
 
 
 class ProductAdmin(admin.ModelAdmin):
     """Product Admin"""
-    list_display = ('name', 'address', 'image',)
+    list_display = ('name', 'image',)
+
+    inlines = [
+        PriceInline,
+    ]
 
 
 class TagAdmin(admin.ModelAdmin):

@@ -30,18 +30,6 @@ class Product(BaseModel):
         blank=True
     )
 
-    address = models.CharField(
-        _('Dirección de venta del producto'),
-        max_length=250,
-        blank=True
-    )
-
-    price = models.DecimalField(
-        _('Precio'),
-        max_digits=6,
-        decimal_places=2
-    )
-
     provider = models.ForeignKey(
         Provider,
         on_delete=models.CASCADE,
