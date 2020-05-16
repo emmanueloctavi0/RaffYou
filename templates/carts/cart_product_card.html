@@ -1,18 +1,19 @@
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <a href="{% url 'products:product-detail' cart_product.product.id %}">
-                <img src="{{ cart_product.product.image.url}}" class="card-img" alt="cart_product.product.name">
+            <a href="{% url 'products:product-detail' cart_product.product.product.id %}">
+                <img src="{{ cart_product.product.product.image.url}}" class="card-img" alt="cart_product.product.name">
             </a>
         </div>
         <div class="col-md-4 p-3 d-flex flex-column justify-content-center">
             <h4 class="card-title font-weight-bold">
-                <a href="{% url 'products:product-detail' cart_product.product.id %}">
-                    {{ cart_product.product.name }}
+                <a href="{% url 'products:product-detail' cart_product.product.product.id %}">
+                    {{ cart_product.product.product.name }}
                 </a>
             </h4>
             <p class="card-text">
-                {{ cart_product.product.description }}
+                {{ cart_product.product.product.description }}
+                - {{ cart_product.product.description }}
             </p>
             <p class="card-text">
                 <small class="text-success">

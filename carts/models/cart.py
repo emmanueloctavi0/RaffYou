@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 # Models
 from core.models import BaseModel
 from users.models import Address
-from products.models import Product
+from products.models import Product, ProductPrice
 
 
 User = get_user_model()
@@ -20,7 +20,7 @@ class Cart(BaseModel):
     )
 
     products = models.ManyToManyField(
-        Product,
+        ProductPrice,
         blank=True,
         through='CartProduct'
     )
@@ -28,7 +28,8 @@ class Cart(BaseModel):
     address = models.ForeignKey(
         Address,
         on_delete=models.DO_NOTHING,
-        null=True
+        null=True,
+        blank=True
     )
 
     @property
@@ -51,11 +52,10 @@ class Cart(BaseModel):
         return f'{self.user.email} - ${self.total_price}'
 
 
-
 class CartProduct(BaseModel):
     """The talbe union between products and carts"""
     product = models.ForeignKey(
-        Product,
+        ProductPrice,
         on_delete=models.CASCADE
     )
 
@@ -74,7 +74,7 @@ class CartProduct(BaseModel):
         return self.product.price * self.amount
 
     def __str__(self):
-        return f'{self.product.name} - {self.amount} - ${self.sub_total_price}'
+        return f'{self.product.product.name} - {self.amount} - ${self.sub_total_price}'
 
     class Meta:
         constraints = [

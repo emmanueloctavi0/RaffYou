@@ -32,4 +32,7 @@ class ProductPrice(BaseModel):
     )
 
     def __str__(self):
-        return f'${self.price} - {self.description}'
+        return f'{self.product.name} - {self.description} - ${self.price}'
+
+    class Meta:
+        ordering = ['order',]

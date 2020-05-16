@@ -8,12 +8,17 @@
         <div class="col-sm">
             <h3>{{ object.name }}</h3>
             <p>{{ object.description }}</p>
-            <h4>${{ object.price }}</h4>
             <form class="cart-product-widget">
+                <div class="form-group col-8 my-3 mx-auto">
+                    <select name="product" class="form-control">
+                        {% for product in object.productprice_set.all %}
+                            <option value="{{ product.id }}">{{ product.description }} ${{ product.price }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 <div class="form-group col-4 my-3 mx-auto">
                     <label for="amount">Cantidad</label>
                     <input type="number" name="amount" class="form-control" id="amount" value="1">
-                    <input type="hidden" name="product" value="{{ object.id }}">
                 </div>
                 <button type="submit" class="btn btn-primary text-white">Agregar al carrito</button>
             </form>

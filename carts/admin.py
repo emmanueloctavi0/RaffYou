@@ -4,10 +4,10 @@ from django.contrib import admin
 
 # Models
 from carts.models import Cart
-from products.models import Product
+from products.models import ProductPrice
 
 class ProductInline(admin.TabularInline):
-    model = Product.cart_set.through
+    model = ProductPrice.cart_set.through
     extra = 1
 
 
