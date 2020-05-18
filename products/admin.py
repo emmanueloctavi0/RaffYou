@@ -5,7 +5,7 @@ from django.contrib import admin
 # Models
 from products.models import (
     Product, ProductTag, ProductPrice,
-    Provider
+    Provider, ProviderAddress
 )
 
 
@@ -28,9 +28,17 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('code', 'value', 'description',)
 
 
+class ProviderAddressInline(admin.StackedInline):
+    model = ProviderAddress
+    extra = 0
+
+
 class ProviderAdmin(admin.ModelAdmin):
     """Providers Admin"""
     list_display = ('name', 'image',)
+    inlines = [
+        ProviderAddressInline,
+    ]
 
 
 admin.site.register(Product, ProductAdmin)
