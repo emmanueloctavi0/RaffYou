@@ -2,4 +2,37 @@
 
 {% block content %}
     <h1 class="my-3">Resume de tu compra</h1>
+    <div class="shadow bg-white rounded">
+        <div class="row p-3">
+            <div class="col-sm-6">
+                <h5>Productos</h5>
+                <ul>
+                    {% for cart_product in cart_products%}
+                        <li>
+                            x{{ cart_product.amount }} 
+                            {{ cart_product.product.product.name }} -
+                            ${{ cart_product.sub_total_price }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p class="price">Total: ${{ cart.total_price }}</p>
+            </div>
+            <div class="col-sm-6">
+                <h5>Dirección</h5>
+                <h6>{{ cart.address.street_name }} {{ cart.address.street_number }}</h6>
+                <p class="text-muted">
+                    ({{ cart.address.zip_code }}) {{ cart.address.city }} {{ cart.address.colony }}
+                    <br>
+                    {{ cart.address.name }}-{{ cart.address.telephone }}
+                    <br>
+                    {{ cart.address.between_street1 }}-{{ cart.address.between_street2 }}
+                    <br>
+                    {{ cart.address.references }}
+                </p>
+            </div>
+        </div>
+        <div class="row p-3 justify-content-center">
+            <button class="btn btn-send">Pedir</button>
+        </div>
+    </div>
 {% endblock %}
