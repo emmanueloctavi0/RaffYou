@@ -26,7 +26,7 @@ class ProductPrice(BaseModel):
         decimal_places=2
     )
 
-    order = models.IntegerField(
+    hierarchy = models.IntegerField(
         _('Jerarquía'),
         default=1
     )
@@ -35,4 +35,4 @@ class ProductPrice(BaseModel):
         return f'{self.product.name} - {self.description} - ${self.price}'
 
     class Meta:
-        ordering = ['order',]
+        ordering = ['hierarchy',]
