@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load user_tags %}
 {% block content %}
     <h1 class="my-3">Resume de tu compra</h1>
     <div class="shadow bg-white rounded">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="row p-3 justify-content-center">
-            <button class="btn btn-send">Pedir</button>
+            <a target="_blank" href="{% volando_whatsapp cart.address.id %}" class="btn btn-send">Pedir</a>
         </div>
     </div>
 {% endblock %}

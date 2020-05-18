@@ -1,3 +1,13 @@
+
+# Django
 from django.contrib import admin
 
-# Register your models here.
+# Models
+from orders.models import Order
+
+
+class OrderAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Order, OrderAdmin)

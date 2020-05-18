@@ -7,7 +7,7 @@ import random
 def random_pk(model):
     """Get a random id from model"""
     max_id = model.objects.all().aggregate(max_id=Max("id"))['max_id']
-    while True:
+    while max_id:
         pk = random.randint(1, max_id)
         try:
             return model.objects.values('id').get(pk=pk)['id']
