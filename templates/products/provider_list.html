@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content_top %}
+    {% if not request.GET.q %}
+        {% include 'generals/banner.html' %}
+    {% endif %}
+{% endblock%}
+
+{% block content %}
+    <h1>La mejor comida del rumbo</h1>
+    <div class="card-columns">
+        {% for provider in object_list %}
+            {% include 'products/provider_card.html' %}
+        {% endfor%}
+    </div>
+    {% include 'generals/paginator.html' %}
+{% endblock %}

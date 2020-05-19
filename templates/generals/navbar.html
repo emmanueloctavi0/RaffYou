@@ -15,17 +15,17 @@
                         Mi cuenta
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'users:address-list' %}">Mis direcciones</a>
-                        <div class="dropdown-divider"></div>
+                        <!-- <a class="dropdown-item" href="{% url 'users:address-list' %}">Mis direcciones</a> -->
+                        <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="{% url 'users:logout' %}">Salir</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="{% url 'carts:index' %}">
                         Mi carrito
                         <span class="badge badge-pill badge-danger">{{ request.user.cart.count_items }}</span>
                     </a>
-                </li>
+                </li> -->
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:login' %}">Ingresar</a>
