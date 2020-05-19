@@ -25,6 +25,10 @@ class Provider(BaseModel):
         blank=True
     )
 
+    @property
+    def first_address(self):
+        return self.provideraddress_set.first()
+
     def __str__(self):
         return self.name
 

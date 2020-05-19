@@ -5,7 +5,10 @@ from django.db.models import Q
 from django.utils.datastructures import MultiValueDictKeyError
 
 # Models
-from products.models import Product
+from products.models import Product, Provider
+
+# Utilities
+from core.utils import random_pk_list
 
 
 class ProductsHomeView(ListView):
@@ -26,3 +29,13 @@ class ProductsHomeView(ListView):
             Q(tags__description__icontains=query) |
             Q(description__icontains=query)
         )
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['providers'] = Provider.objects.filter(
+            id__in=random_pk_list(Provider, 5),
+        ).exclude(
+            image=''
+        )
+
+        return context
