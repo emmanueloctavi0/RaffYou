@@ -5,6 +5,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Models
 from core.models import AddressBaseModel, BaseModel
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Provider(BaseModel):
@@ -22,6 +25,12 @@ class Provider(BaseModel):
 
     image = models.ImageField(
         upload_to='images/providers',
+        blank=True
+    )
+
+    rate = models.ManyToManyField(
+        User,
+        through='Score',
         blank=True
     )
 
