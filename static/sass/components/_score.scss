@@ -1,0 +1,25 @@
+.score {
+
+    direction: rtl;
+    unicode-bidi: bidi-override;
+
+    label {
+        color: gray;
+    }
+
+    label:hover{
+        color:orange;
+    }
+
+    label:hover ~ label{
+        color:orange;
+    }
+
+    input[type = "radio"]{
+        display:none;
+    }
+
+    input[type = "radio"]:checked ~ label{
+        color:orange;
+    }
+}

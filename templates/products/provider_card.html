@@ -1,8 +1,9 @@
 <div class="card mx-auto" style="max-width: 300px;">
-    <a href="#{{ provider.id }}">
+    <a href="{% url 'products:provider-detail' provider.id %}">
         <img class="card-img-top" src="{{ provider.image.url }}" alt="provider.name">
         <div class="card-body text-center">
             <h5 class="card-title text-primary font-weight-bold">{{ provider.name }}</h5>
+            {% include 'products/components/score.html' with id=provider.id %}
             <p>{{ provider.description }}</p>
         </div>
         <div class="card-footer">

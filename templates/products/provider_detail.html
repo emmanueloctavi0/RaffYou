@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row mt-5 text-center">
+        <div class="col-sm mb-4">
+            <img class="max-w-8 br-8 rounded shadow w-100" src="{{ object.image.url }}" alt="{{ objects.description }}">
+        </div>
+        <div class="col-sm">
+            <h3>{{ object.name }}</h3>
+            {% include 'products/components/score.html' with id='0' %}
+            <p class="m-0">{{ object.description }}</p>
+            <p class="m-0 text-muted">{{ provider.first_address.street_name }} #{{ provider.first_address.street_number}}</p>
+            <p class="m-0 text-muted">{{ provider.first_address.colony }}</p>
+            <p class="m-0 text-muted">{{ provider.first_address.zip_code }} - {{ provider.first_address.city }}</p>
+            <p class="m-0 text-muted">{{ provider.first_address.references }}</p>
+            <p class="m-0 text-muted mb-5">Tel: {{ provider.first_address.telephone }}</p>
+
+            {% include 'products/components/score.html' with id=object.id with_form=True %}
+        </div>
+    </div>
+    <hr>
+    <h5>Comentarios:</h5>
+    <div class="row">
+        <div class="col-12">
+            <p>Éste negocio aún no tiene comentarios</p>
+        </div>
+    </div>
+{% endblock %}
