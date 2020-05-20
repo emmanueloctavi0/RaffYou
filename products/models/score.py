@@ -41,3 +41,14 @@ class Score(BaseModel):
         max_length=300,
         blank=True
     )
+
+    def __str__(self):
+        return f'{self.comment[:10]}... - {self.qualification}'
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'provider'],
+                name='unique_comment_by_user'
+            )
+        ]

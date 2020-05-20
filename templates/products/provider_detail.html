@@ -21,19 +21,49 @@
     </div>
     <hr>
     <h5>Comentarios:</h5>
-    <div class="row">
-        <div class="col-12">
-            <p>Éste negocio aún no tiene comentarios</p>
+    
+    {% for comment in provider.comments %}
+        <div class="row mb-3">
+            <div class="col-sm-10">
+            <div class="card">
+                <div class="card-header">
+                    {% if comment.user.profile_picture %}
+                        <img
+                            src="{{ comment.user.profile_picture.url }}"
+                            alt="Foto de perfil de {{ comment.user.first_name }}"
+                            width="25" height="25" class="d-inline-block align-top rounded-circle"
+                            >
+                    {% endif %}
+                    {{ comment.user.first_name }}
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ comment.comment }}
+                    </p>
+                </div>
+                <div class="card-footer text-right">
+                    <small>{{ comment.updated_at }}</small>
+                </div>
+            </div>
+            </div>
         </div>
-    </div>
+    {% empty %}
+        <p>Éste negocio aún no tiene comentarios</p>
+    {% endfor%}
+
     <div class="row">
         <div class="col-12">
-            <form action="" method="post">
+            <form method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <textarea placeholder="Agregar un comentario" class="form-control" id="comment" name="comment" rows="3"></textarea>
+                    {{ score_form.comment }}
                 </div>
                 <div class="text-center">
+                    {% if score_form.qualification.errors %}
+                        <small class="text-danger d-block m-0">
+                            {{ score_form.qualification.errors.0 }}
+                        </small>
+                    {% endif %}
                     {% include 'products/components/score.html' with id=provider.id %}
                     <button class="btn btn-send" type="submit">Calificar y comentar</button>
                 </div>

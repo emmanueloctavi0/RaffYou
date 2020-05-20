@@ -35,6 +35,11 @@ class Provider(BaseModel):
     )
 
     @property
+    def comments(self):
+        """Return all comments and score"""
+        return self.score_set.all()
+
+    @property
     def first_address(self):
         return self.provideraddress_set.first()
 
