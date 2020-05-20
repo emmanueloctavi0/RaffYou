@@ -7,16 +7,15 @@
         </div>
         <div class="col-sm">
             <h3>{{ object.name }}</h3>
-            {% include 'products/components/score.html' with id='0' %}
+            {% include 'products/components/only_score.html' with rate=object.score.0 %}
+            <br>
+            {{ object.score.1 }}
             <p class="m-0">{{ object.description }}</p>
             <p class="m-0 text-muted">{{ provider.first_address.street_name }} #{{ provider.first_address.street_number}}</p>
             <p class="m-0 text-muted">{{ provider.first_address.colony }}</p>
             <p class="m-0 text-muted">{{ provider.first_address.zip_code }} - {{ provider.first_address.city }}</p>
             <p class="m-0 text-muted">{{ provider.first_address.references }}</p>
             <p class="m-0 text-muted mb-5">Tel: {{ provider.first_address.telephone }}</p>
-            <form action="">
-                
-            </form>
         </div>
     </div>
     <hr>
@@ -35,10 +34,15 @@
                             >
                     {% endif %}
                     {{ comment.user.first_name }}
+                    {% include 'products/components/only_score.html' with rate=comment.rate %}
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                        {{ comment.comment }}
+                        {% if comment.comment %}
+                            {{ comment.comment }}
+                        {% else %}
+                            <span class="text-muted">Sin comentario</span>
+                        {% endif%}
                     </p>
                 </div>
                 <div class="card-footer text-right">
@@ -59,13 +63,13 @@
                     {{ score_form.comment }}
                 </div>
                 <div class="text-center">
-                    {% if score_form.qualification.errors %}
+                    {% if score_form.rate.errors %}
                         <small class="text-danger d-block m-0">
-                            {{ score_form.qualification.errors.0 }}
+                            {{ score_form.rate.errors.0 }}
                         </small>
                     {% endif %}
                     {% include 'products/components/score.html' with id=provider.id %}
-                    <button class="btn btn-send" type="submit">Calificar y comentar</button>
+                    <button class="btn btn-send mt-3" type="submit">Calificar y comentar</button>
                 </div>
             </form>
         </div>

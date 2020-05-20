@@ -5,6 +5,7 @@
 
     label {
         color: gray;
+        margin: 0;
     }
 
     label:hover{
@@ -14,6 +15,26 @@
     label:hover ~ label{
         color:orange;
     }
+
+    input[type = "radio"]{
+        display:none;
+    }
+
+    input[type = "radio"]:checked ~ label{
+        color:orange;
+    }
+}
+
+.only_score {
+
+    direction: rtl;
+    unicode-bidi: bidi-override;
+
+    label {
+        color: gray;
+        margin: 0;
+    }
+
 
     input[type = "radio"]{
         display:none;

@@ -40,6 +40,18 @@ class Provider(BaseModel):
         return self.score_set.all()
 
     @property
+    def score(self):
+        """Return the provider rate"""
+        score = self.score_set.aggregate(
+            models.Avg('rate')
+        )['rate__avg']
+
+        if not score:
+            return 5, 5
+
+        return int(score), score
+
+    @property
     def first_address(self):
         return self.provideraddress_set.first()
 

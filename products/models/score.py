@@ -13,7 +13,7 @@ User = get_user_model()
 
 
 class Score(BaseModel):
-    class Qualification(models.IntegerChoices):
+    class Rate(models.IntegerChoices):
         START_1 = 1, _('Pésimo')
         START_2 = 2, _('Malo')
         START_3 = 3, _('Bueno')
@@ -30,10 +30,10 @@ class Score(BaseModel):
         on_delete=models.CASCADE
     )
 
-    qualification = models.IntegerField(
+    rate = models.IntegerField(
         _('Calificación'),
-        choices=Qualification.choices,
-        default=Qualification.START_1
+        choices=Rate.choices,
+        default=Rate.START_1
     )
 
     comment = models.TextField(
@@ -43,7 +43,7 @@ class Score(BaseModel):
     )
 
     def __str__(self):
-        return f'{self.comment[:10]}... - {self.qualification}'
+        return f'{self.comment[:10]}... - {self.rate}'
 
     class Meta:
         constraints = [

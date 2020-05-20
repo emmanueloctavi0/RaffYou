@@ -11,7 +11,7 @@ class ScoreForm(forms.ModelForm):
     class Meta:
         model = Score
         fields = [
-            'qualification',
+            'rate',
             'comment',
         ]
 
@@ -26,7 +26,7 @@ class ScoreForm(forms.ModelForm):
         }
 
         error_messages = {
-            'qualification': {
+            'rate': {
                 'required': _("Es necesario marcar una calificación"),
             },
         }
