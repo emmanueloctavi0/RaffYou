@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from django.urls import reverse_lazy
+from django.contrib.messages import constants as message_constants
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -202,3 +203,6 @@ AUTH_CLIENT_SECRET = os.getenv('AUTH_CLIENT_SECRET')
 AUTH_REDIRECT_URI = os.getenv('AUTH_REDIRECT_URI')
 AUTH_URL = os.getenv('AUTH_URL')
 AUTH_TOKEN_URL = os.getenv('AUTH_TOKEN_URL')
+
+# Messages tags
+MESSAGE_TAGS = {message_constants.ERROR: 'danger'}

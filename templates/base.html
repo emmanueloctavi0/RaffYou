@@ -11,47 +11,14 @@
     <link rel="stylesheet" href="{% sass_src 'sass/index.scss' %}">
     <title>RaffYou</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    
-    <!-- Metas social media -->
-    <!-- Search Engine -->
-    <meta name="description" content="En RaffYou hacemos tu vida más fácil">
-    <meta name="image" content="https://raffyou.com/static/img/raffyou.png">
-    <!-- Schema.org for Google -->
-    <meta itemprop="name" content="RaffYou">
-    <meta itemprop="description" content="En RaffYou hacemos tu vida más fácil">
-    <meta itemprop="image" content="https://raffyou.com/static/img/raffyou.png">
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="RaffYou">
-    <meta name="twitter:description" content="En RaffYou hacemos tu vida más fácil">
-    <meta name="twitter:image:src" content="https://raffyou.com/static/img/raffyou.png">
-    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta name="og:title" content="RaffYou">
-    <meta name="og:description" content="En RaffYou hacemos tu vida más fácil">
-    <meta name="og:image" content="https://raffyou.com/static/img/raffyou.png">
-    <meta name="og:url" content="https://raffyou.com/products/">
-    <meta name="og:site_name" content="RaffYou">
-    <meta name="og:locale" content="es_MX">
-    <meta name="fb:app_id" content="472591200085360">
-    <meta name="og:type" content="website">
 
-    <!-- Google gmail verification -->
-    <meta name="google-site-verification" content="6vdTNBQk9JbZQQhRSr3A753qTMsF5pesKuQP9UmHR7o" />
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167204203-1"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-167204203-1');
-    </script>
+    {% include 'core/meta_sm.html' %}
+    {% include 'core/meta_google_service.html' %}
 
 </head>
 <body>
     {% include 'generals/navbar.html' %}
-    {% include 'generals/alerts.html' %}
+    {% include 'core/alerts.html' %}
     {% block content_top %}
     {% endblock%}
 
