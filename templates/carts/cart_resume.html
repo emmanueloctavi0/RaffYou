@@ -33,7 +33,10 @@
             </div>
         </div>
         <div class="row p-3 justify-content-center">
-            <a target="_blank" href="{% volando_whatsapp cart.address.id %}" class="btn btn-send">Pedir</a>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-send" type="submit">Pedir</button>
+            </form>
         </div>
     </div>
 {% endblock %}

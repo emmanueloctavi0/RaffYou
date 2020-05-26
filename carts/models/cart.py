@@ -27,10 +27,14 @@ class Cart(BaseModel):
 
     address = models.ForeignKey(
         Address,
-        on_delete=models.DO_NOTHING,
+        on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
+
+    class Meta:
+        verbose_name = _('Carrito')
+        verbose_name_plural = _('Carritos')
 
     @property
     def total_price(self):

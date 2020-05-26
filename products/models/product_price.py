@@ -36,3 +36,4 @@ class ProductPrice(BaseModel):
 
     class Meta:
         ordering = ['hierarchy',]
+        verbose_name = _('Característica de precio')

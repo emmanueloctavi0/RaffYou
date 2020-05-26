@@ -58,6 +58,10 @@ class Provider(BaseModel):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _('Proveedor')
+        verbose_name_plural = _('Proveedores')
+
 
 class ProviderAddress(AddressBaseModel):
     provider = models.ForeignKey(

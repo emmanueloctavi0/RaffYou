@@ -10,7 +10,10 @@ from core.models import BaseModel, CatalogModelBase
 
 class ProductTag(CatalogModelBase):
     """Provider category or tag"""
-    pass
+
+    class Meta:
+        verbose_name = _('Categoría de producto')
+        verbose_name_plural = _('Categorias de productos')
 
 
 class Product(BaseModel):
@@ -41,3 +44,7 @@ class Product(BaseModel):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _('Producto')
+        verbose_name_plural = _('Productos')
