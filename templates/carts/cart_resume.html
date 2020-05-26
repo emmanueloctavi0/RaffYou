@@ -14,8 +14,9 @@
                             ${{ cart_product.sub_total_price }}
                         </li>
                     {% endfor %}
+                    <li>Costo de envío: $20</li>
                 </ul>
-                <p class="price">Total: ${{ cart.total_price }}</p>
+                <p class="price">Total: ${{ cart.total_price|add:"20" }}</p>
             </div>
             <div class="col-sm-6">
                 <h5>Dirección</h5>

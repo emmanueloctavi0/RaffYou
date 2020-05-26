@@ -11,12 +11,12 @@
                     <h6>Productos ({{ request.user.cart.count_items }}):
                         $ {{ request.user.cart.total_price }}
                     </h6>
-                    <p class="text-success">Envío a travéz de <strong>Voy volando</strong></p>
+                    <p class="text-success">Costo de envío: <strong>$20</strong></p>
                     <h5>
                         Total en efectivo:
-                        $ {{ request.user.cart.total_price }}
+                        $ {{ request.user.cart.total_price|add:"20" }}
                     </h5>
-                    <small class="text-danger">Los precios de los productos podrían no ser reales, pregunta al repartido el precio exacto. !Estamos trajabando arduamente para tenerlos lo más acercados a la realidad!</small>
+                    <small class="text-danger">Es todo lo que te cobrará el repartido, pero agradecemos las propinas ;-)</small>
                 </div>
         </div>
         <div class="row">

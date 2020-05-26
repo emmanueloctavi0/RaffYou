@@ -14,4 +14,13 @@
         {% endfor%}
     </div>
     {% include 'generals/paginator.html' %}
+    <hr>
+    <h3>Lo más rico...</h3>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-sm-4 mt-3">
+                {% include 'products/product_card.html' %}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

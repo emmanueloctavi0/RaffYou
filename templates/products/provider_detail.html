@@ -19,6 +19,13 @@
         </div>
     </div>
     <hr>
+    <div class="row">
+        {% for product in provider.product_set.all %}
+            <div class="col-sm-4">
+                {% include 'products/product_card.html' %}
+            </div>
+        {% endfor %}
+    </div>
     <h5>Comentarios:</h5>
     
     {% for comment in provider.comments %}

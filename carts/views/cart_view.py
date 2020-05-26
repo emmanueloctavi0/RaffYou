@@ -20,8 +20,10 @@ def cart_view(request):
         cart_products = None
 
     products = Product.objects.filter(
-        id__in=random_pk_list(Product, 3)
-    )[:3]
+        id__in=random_pk_list(Product, 3),
+    ).exclude(
+        image=''
+    )
 
     return render(request, 'carts/cart.html', {
         'cart_products': cart_products,
