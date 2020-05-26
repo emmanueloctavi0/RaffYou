@@ -26,6 +26,11 @@
                         <span class="badge badge-pill badge-danger">{{ request.user.cart.count_items }}</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'orders:order-list' %}">
+                        Mis pedidos
+                    </a>
+                </li>
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:login' %}">Ingresar</a>

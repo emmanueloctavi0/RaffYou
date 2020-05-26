@@ -51,6 +51,15 @@ class Order(BaseModel):
         default=Status.STARTED,
     )
 
+    @property
+    def total_price(self):
+        """Cart total price"""
+        order_products = self.orderproduct_set.all()
+        price = 0
+        for order_product in order_products:
+            price += order_product.sub_total_price
+        return price
+
     def __str__(self):
         return f'{self.address.telephone} {self.products.first()}...'
 

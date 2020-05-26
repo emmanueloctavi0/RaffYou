@@ -39,8 +39,8 @@ class CartResumeView(LoginRequiredMixin, View):
         # Address order
         order_address = model_to_dict(cart.address)
         order_address.pop('user')
-        order_address = OrderAddress(**order_address)
-        order_address.save()
+        order_address.pop('id')
+        order_address = OrderAddress.objects.create(**order_address)
 
         # Create order
         order = Order.objects.create(
@@ -57,12 +57,5 @@ class CartResumeView(LoginRequiredMixin, View):
             )
         cart.delete()
 
-        messages.success(request, '!Tu pedido ha sido enviado!')
-        return render(
-            request,
-            'carts/cart_resume.html',
-            context={
-                'cart_products': cart_products,
-                'cart': cart,
-            }
-        )
+        messages.success(request, '!Tu pedido ha sido solicitado!')
+        return redirect('orders:order-list')

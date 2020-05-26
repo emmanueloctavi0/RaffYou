@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="my-3">Mis pedidos</h1>
+    {% for order in object_list %}
+        {% include 'orders/order_card.html' %}
+    {% empty %}
+        <h3>Aún no tienes pedidos.</h3>
+    {% endfor %}
+    {% include 'generals/paginator.html' %}
+    <hr>
+    <small class="text-danger">
+        Para cualquier aclaración por favor escríbenos a nuestra página de
+        <strong><a href="https://m.me/RaffYouOfficial" target="_blank">Facebook</a></strong>
+    </small>
+{% endblock%}

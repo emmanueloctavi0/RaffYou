@@ -14,6 +14,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('users.urls', namespace='users')),
     path('comida/', include('products.urls', namespace='products')),
+    path('pedidos/', include('orders.urls', namespace='orders')),
     # API
     path('carrito/', include('carts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -39,7 +39,9 @@ class OrderAdmin(admin.ModelAdmin):
 
     list_editable = ['status',]
 
-    # fields
+    readonly_fields = ('name', '_address')
+
+    exclude = ['user', 'address']
 
     inlines = [
         ProductsInline,
@@ -58,6 +60,16 @@ class OrderAdmin(admin.ModelAdmin):
     def address_reference(self, order):
         return format_html(
             '<a target="_blank" href="https://waze.com/ul?q={} {} {} {}">{}</a>',
+            order.address.street_name,
+            order.address.street_number,
+            order.address.colony,
+            order.address.city,
+            order.address.references,
+        )
+
+    def _address(self, order):
+        return format_html(
+            '<p>{}, {}, {}, {}, {}</p>',
             order.address.street_name,
             order.address.street_number,
             order.address.colony,
