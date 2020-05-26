@@ -16,7 +16,7 @@
                         Total en efectivo:
                         $ {{ request.user.cart.total_price|add:"20" }}
                     </h5>
-                    <small class="text-danger">Es todo lo que te cobrará el repartido, pero agradecemos las propinas ;-)</small>
+                    <small class="text-danger">Es todo lo que te cobrará el repartidor ;) cualquier incidente reportalo en nuestra página de Facebook </small>
                 </div>
         </div>
         <div class="row">
@@ -27,10 +27,11 @@
     {% else %}
         <h4 class="my-5">Aún no tienes productos en tu carrito</h4>
     {% endif %}
+    <hr>
     <h3 class="mt-5">Te podría interesar...</h3>
     <div class="card-deck">
         {% for product in products %}
-            {% include 'products/product_card_simple.html' %}
+            {% include 'products/product_card.html' %}
         {% endfor%}
     </div>
 {% endblock %}

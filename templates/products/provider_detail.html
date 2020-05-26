@@ -19,13 +19,18 @@
         </div>
     </div>
     <hr>
-    <div class="row">
-        {% for product in provider.product_set.all %}
-            <div class="col-sm-4">
-                {% include 'products/product_card.html' %}
-            </div>
+    <div class="card-deck">
+        {% for product in page_obj %}
+            {% include 'products/product_card.html' %}
         {% endfor %}
     </div>
+    <div class="row">
+        <div class="col-12">
+            {% include 'generals/paginator.html' %}
+        </div>
+    </div>
+
+    <hr class="my-4">
     <h5>Comentarios:</h5>
     
     {% for comment in provider.comments %}

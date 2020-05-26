@@ -4,9 +4,10 @@ from django.views.generic import DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Models
-from products.models import Provider, Score
+from products.models import Provider, Score, Product
 
 # Forms
 from products.forms import ScoreForm
@@ -18,9 +19,24 @@ from django.db import IntegrityError
 class ProviderDetailView(DetailView):
     model = Provider
 
+    def get_products_list(self):
+        """
+        Get the products from provider with a paginator
+        """
+        products = Product.objects.filter(
+            provider=self.get_object()
+        )
+        paginator = Paginator(products, 3) # Show 25 contacts per page.
+
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return page_obj
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['score_form'] = ScoreForm()
+        context['page_obj'] = self.get_products_list()
+        context['is_paginated'] = True
         return context
 
     @method_decorator(login_required)

@@ -16,11 +16,9 @@
     {% include 'generals/paginator.html' %}
     <hr>
     <h3>Lo más rico...</h3>
-    <div class="row">
+    <div class="card-deck">
         {% for product in products %}
-            <div class="col-sm-4 mt-3">
-                {% include 'products/product_card.html' %}
-            </div>
+            {% include 'products/product_card.html' %}
         {% endfor %}
     </div>
 {% endblock %}
