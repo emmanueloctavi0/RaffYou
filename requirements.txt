@@ -8,3 +8,4 @@ requests==2.23.0
 djangorestframework==3.11.0
 sentry-sdk==0.14.4
 django-storages==1.9.1
+boto3==1.13.17
