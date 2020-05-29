@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <div class="row mt-5 text-center">
         <div class="col-sm mb-4">
-            <img class="max-w-8 br-8 rounded shadow w-100" src="{{ object.image.url }}" alt="{{ objects.description }}">
+            {% if object.image %}
+                <img class="max-w-8 br-8 rounded shadow w-100" src="{{ object.image.url }}" alt="{{ objects.description }}">
+            {% else %}
+                <img class="card-img-top" src="{% static 'img/sin_foto.png' %}" alt="product.name">
+            {% endif %}
         </div>
         <div class="col-sm">
             <h3>{{ object.name }}</h3>

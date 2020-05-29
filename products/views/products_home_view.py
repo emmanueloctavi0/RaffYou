@@ -14,10 +14,10 @@ from core.utils import random_pk_list
 class ProductsHomeView(ListView):
     model = Product
     paginate_by = 3
+    ordering = ['created_at']
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.order_by('-created_at')
         try:
             query = self.request.GET['q']
         except MultiValueDictKeyError:
@@ -33,9 +33,13 @@ class ProductsHomeView(ListView):
     def get_context_data(self):
         context = super().get_context_data()
         context['providers'] = Provider.objects.filter(
-            id__in=random_pk_list(Provider, 6),
+            id__in=random_pk_list(Provider, 3),
         ).exclude(
             image=''
         )
+
+        query = self.request.GET.get('q')
+        if query:
+            context['search'] = f'q={query}'
 
         return context

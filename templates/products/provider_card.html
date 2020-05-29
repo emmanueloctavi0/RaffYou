@@ -1,6 +1,11 @@
+{% load static %}
 <div class="card mx-auto" style="max-width: 300px;">
     <a href="{% url 'products:provider-detail' provider.id %}">
-        <img class="card-img-top" src="{{ provider.image.url }}" alt="provider.name">
+        {% if provider.image %}
+            <img class="card-img-top" src="{{ provider.image.url }}" alt="provider.name">
+        {% else %}
+            <img class="card-img-top" src="{% static 'img/sin_foto.png' %}" alt="provider.name">
+        {% endif %}
         <div class="card-body text-center">
             <h5 class="card-title text-primary font-weight-bold">{{ provider.name }}</h5>
             {% include 'products/components/only_score.html' with rate=provider.score.0 %}

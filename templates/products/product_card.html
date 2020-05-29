@@ -1,8 +1,14 @@
+{% load static %}
 <div class="card mx-auto" style="max-width: 300px;">
     <a href="{% url 'products:product-detail' product.id%}">
-        <img class="card-img-top" src="{{ product.image.url }}" alt="product.name">
+        {% if product.image %}
+            <img class="card-img-top" src="{{ product.image.url }}" alt="product.name">
+        {% else %}
+            <img class="card-img-top" src="{% static 'img/sin_foto.png' %}" alt="product.name">
+        {% endif %}
         <div class="card-body text-center">
             <h5 class="card-title text-primary font-weight-bold">{{ product.name }} {{ product.productprice_set.first.description }}</h5>
+            <p class="card-text">{{ product.provider.name }}</p>
             <p class="card-text price">${{ product.productprice_set.first.price }}</p>
         </div>
     </a>

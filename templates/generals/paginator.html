@@ -24,8 +24,13 @@
             </li>
             {% endif %}
             {% for object in page_obj.paginator.page_range %}
-            <li class="page-item"><a class="page-link"
-                    href="{{ request.path }}?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                {% if not search %}
+                    <li class="page-item"><a class="page-link"
+                            href="{{ request.path }}?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link"
+                        href="{{ request.path }}?{{ search }}&page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                {% endif %}
             {% endfor %}
             {% if page_obj.has_next %}
             {% if not search %}
