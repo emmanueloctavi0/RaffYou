@@ -1,8 +1,13 @@
+{% load static %}
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-4">
             <a href="{% url 'products:product-detail' cart_product.product.product.id %}">
-                <img src="{{ cart_product.product.product.image.url}}" class="card-img" alt="cart_product.product.name">
+                {% if cart_product.product.product.image %}
+                    <img src="{{ cart_product.product.product.image.url}}" class="card-img" alt="cart_product.product.name">
+                {% else %}
+                    <img src="{% static 'img/sin_foto.png' %}" class="card-img" alt="cart_product.product.name">
+                {% endif %}
             </a>
         </div>
         <div class="col-md-4 p-3 d-flex flex-column justify-content-center">
