@@ -9,13 +9,14 @@
 {% block content %}
     <h1>La mejor comida del rumbo</h1>
     <!-- <small class="text-danger">Los precios de los productos podrían no ser reales, pregunta al repartido el precio exacto. !Estamos trajabando arduamente para tenerlos lo más acercados a la realidad!</small> -->
-    <div class="card-deck">
+    <div class="card-columns">
         {% for product in object_list %}
         {% include 'products/product_card.html' %}
         {% endfor%}
     </div>
     {% include 'generals/paginator.html' %}
     <hr>
+    <h3 class="text-center">¡Lo mejor de Nochixtlán Oaxaca!</h3>
     <div class="card-columns">
         {% for provider in providers %}
             {% include 'products/provider_card.html' %}
