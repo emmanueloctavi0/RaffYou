@@ -202,6 +202,7 @@ AUTH_USER_MODEL = 'users.User'
 # Sass configuration
 # Set the statics files
 SASS_PROCESSOR_ROOT = os.path.join(BASE_DIR, 'static')
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
