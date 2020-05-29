@@ -32,14 +32,18 @@ class ProductsHomeView(ListView):
 
     def get_context_data(self):
         context = super().get_context_data()
-        context['providers'] = Provider.objects.filter(
-            id__in=random_pk_list(Provider, 3),
-        ).exclude(
-            image=''
-        )
-
         query = self.request.GET.get('q')
+        providers = Provider.objects.all()
+
         if query:
             context['search'] = f'q={query}'
+            context['providers'] = providers.filter(
+                Q(name__icontains=query) |
+                Q(description__icontains=query)
+            )[:3]
+        else:
+            context['providers'] = providers.filter(
+                id__in=random_pk_list(Provider, 3),
+            )
 
         return context
