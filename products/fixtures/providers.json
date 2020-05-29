@@ -1,1 +1,178 @@
-[{"model": "products.provider", "pk": 1, "fields": {"created_at": "2020-04-30T05:01:35.621Z", "updated_at": "2020-04-30T05:01:35.621Z", "name": "T\u00eda Juanita", "description": "", "image": ""}}, {"model": "products.provider", "pk": 2, "fields": {"created_at": "2020-04-30T05:01:38.956Z", "updated_at": "2020-04-30T05:01:38.956Z", "name": "Mercado", "description": "", "image": ""}}, {"model": "products.provider", "pk": 3, "fields": {"created_at": "2020-04-30T05:01:48.055Z", "updated_at": "2020-04-30T05:01:48.055Z", "name": "Do\u00f1a de las tlayudas", "description": "", "image": ""}}]
+[
+    {
+        "model": "products.provider",
+        "pk": 1,
+        "fields": {
+            "created_at": "2020-05-18T15:13:56.334Z",
+            "updated_at": "2020-05-20T18:29:16.130Z",
+            "name": "The pizza House",
+            "description": "Pizzer\u00eda de Innovaci\u00f3n en Nochixtlan.\r\nPizzas - Hamburguesas - Alitas - Nuggets -  Papas a la Francesa.\r\n\r\nNo Horneamos pizza, Horneamos Felicidad!",
+            "image": "images/providers/pizza_house_YnqesKU.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 2,
+        "fields": {
+            "created_at": "2020-05-18T20:02:08.378Z",
+            "updated_at": "2020-05-20T18:29:09.896Z",
+            "name": "MASA MADRE- Al horno de Le\u00f1a",
+            "description": "Pizzas y pastas elaboradas con un equilibrio perfecto de sabores y aromas por condimentos org\u00e1nicos de gran calidad, acompa\u00f1adas de quesos y embutidos en su mayor\u00eda importados.\r\nmasa fermentada mas de 48 horas, horno de le\u00f1a a mas de 500 grados.\r\n\r\n Pizzas ligeras  con autentico sabor a le\u00f1a!",
+            "image": "images/providers/masa_madre.png"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 7,
+        "fields": {
+            "created_at": "2020-05-19T03:56:41.882Z",
+            "updated_at": "2020-05-20T18:29:04.894Z",
+            "name": "Atlantic Pizza",
+            "description": "Pizzas Italianas",
+            "image": "images/providers/atlantic_pizza.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 8,
+        "fields": {
+            "created_at": "2020-05-19T15:38:15.175Z",
+            "updated_at": "2020-05-20T18:28:50.503Z",
+            "name": "TresBros Grill",
+            "description": "Venta de Grill - Snacks - Drinks",
+            "image": "images/providers/3bros.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 9,
+        "fields": {
+            "created_at": "2020-05-19T16:00:42.363Z",
+            "updated_at": "2020-05-20T18:28:40.191Z",
+            "name": "Taqueria LIZ",
+            "description": "Taqueria con mas de 27 a\u00f1os de experiencia que lo respaldan.\r\nVenta de Tacos de Suadero, Cecina Blanca, Enchilada, Chorizo, acompa\u00f1ado de papas, nopales y quesillo.",
+            "image": "images/providers/taqueria_liz_JZOnZys.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 12,
+        "fields": {
+            "created_at": "2020-05-19T17:58:58.769Z",
+            "updated_at": "2020-05-20T18:28:18.894Z",
+            "name": "Pasteler\u00eda & Caf\u00e9 Rey David",
+            "description": "Pasteler\u00eda y Cafeter\u00eda\r\nSiempre con un trabajo excepcional, tienen  a la venta magn\u00edficos postres , dise\u00f1os en pasteles y cupcakes para toda ocasi\u00f3n, as\u00ed como  Cumpliendo sue\u00f1os y ayudando a hacerlos realidad \r\nCrea momentos inolvidables.",
+            "image": "images/providers/rey_david.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 13,
+        "fields": {
+            "created_at": "2020-05-19T18:11:50.760Z",
+            "updated_at": "2020-05-20T18:28:09.153Z",
+            "name": "Maple Beer",
+            "description": "Cafeter\u00eda - Hamburgeseria - Bar \r\nNegocio Familiar ofreciendo un ambiente familiar y productos de la mejor calidad.",
+            "image": "images/providers/maple.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 14,
+        "fields": {
+            "created_at": "2020-05-19T18:33:27.618Z",
+            "updated_at": "2020-05-20T18:23:58.835Z",
+            "name": "Marisquer\u00eda La Casona",
+            "description": "Restaurante de Mariscos\r\nLos mejores mariscos del mar con una gran variedad de platillos, ofrecemos servicio a domicilio.",
+            "image": "images/providers/la_casona.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 15,
+        "fields": {
+            "created_at": "2020-05-19T19:46:51.595Z",
+            "updated_at": "2020-05-20T18:21:55.174Z",
+            "name": "Marisquer\u00eda \u201cRancho La Trucha\u201d",
+            "description": "Marisqueria Familiar Rancho La Trucha es el restaurante perfecto para ti. Ofrecemos una amplia variedad de platos de mariscos  con una amplia gama de diferentes pescados y otras delicias acu\u00e1ticas, pero cualquiera que sea tu antojo, toda nuestra comida te dejara lleno, satisfecho y ansioso por volver.",
+            "image": "images/providers/trucha.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 16,
+        "fields": {
+            "created_at": "2020-05-19T19:58:46.749Z",
+            "updated_at": "2020-05-20T18:21:44.399Z",
+            "name": "Billar y Restaurant \"El Kabuki\"",
+            "description": "TE OFRECEMOS SERVICIO DE RESTAURANT, DISCO, BILLARES, AREA DE JUEGOS Y KARAOKE CONTAMOS CON LA MEJOR VISTA PANORAMICA DE NOCHIXTLAN",
+            "image": "images/providers/kabuki.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 17,
+        "fields": {
+            "created_at": "2020-05-19T20:03:56.623Z",
+            "updated_at": "2020-05-20T18:21:32.502Z",
+            "name": "Xiuhquila",
+            "description": "Restaurante, Caf\u00e9, Bar.\r\nOfrecemos gran variedad de platillos t\u00edpicos de la regi\u00f3n, postres, bebidas frias y calientes.",
+            "image": "images/providers/xiuhquila_logo.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 18,
+        "fields": {
+            "created_at": "2020-05-20T18:02:00.454Z",
+            "updated_at": "2020-05-20T19:16:08.672Z",
+            "name": "Restaurant Jarros",
+            "description": "Restaurante Familiar \r\nOfrece  una gran variedad de platillos:\r\nAcompa\u00f1ado con sopa caldosa, arroz y agua.",
+            "image": "images/providers/jarros_logo2.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 20,
+        "fields": {
+            "created_at": "2020-05-20T23:52:57.233Z",
+            "updated_at": "2020-05-20T23:52:57.233Z",
+            "name": "Barbacoa De Borrego \"Javiercito\"",
+            "description": "Exquisita Barbacoa de borrego, delisiosa masita y consome.",
+            "image": "images/providers/barbacoa_javiercito.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 21,
+        "fields": {
+            "created_at": "2020-05-21T00:08:32.511Z",
+            "updated_at": "2020-05-21T00:10:08.727Z",
+            "name": "Barbacoa  \"Don Memo\"",
+            "description": "Rica Barbacoa de Borrego, los a\u00f1os de experiencia nos respaldan!!",
+            "image": "images/providers/memo_logo.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 22,
+        "fields": {
+            "created_at": "2020-05-21T02:56:00.381Z",
+            "updated_at": "2020-05-21T02:59:24.092Z",
+            "name": "Club de Nutrici\u00f3n  HERBALIFE",
+            "description": "Te ofrecemos una gama de Productos Nutricionales para  \"Una vida activa\".\r\nContamos con un sistema  b\u00e1sico de Nutrici\u00f3n para consumo de toda la familia que contiene:\r\n\r\n*Prote\u00edna de Alta Calidad\r\n* Vitaminas y Minerales\r\n*Tes energ\u00e9ticos con alta cantidad de Antioxidantes\r\n*Limpieza para un mejor funcionamiento y mantenimiento del aparato digestivo\r\n*Prote\u00ednas certificadas\r\n* Y programas espec\u00edficos para cada sistema de tu cuerpo.",
+            "image": "images/providers/herbalife.jpg"
+        }
+    },
+    {
+        "model": "products.provider",
+        "pk": 23,
+        "fields": {
+            "created_at": "2020-05-21T16:25:57.217Z",
+            "updated_at": "2020-05-21T16:31:31.559Z",
+            "name": "Yogur-tl\u00e1n",
+            "description": "Postres de la m\u00e1s alta calidad elaborado con yogur de b\u00falgaros.\r\n Ven y conoce nuestros postres que te encantaran!!\r\nDelicias Saludables..\r\n100% Natural",
+            "image": "images/providers/yogurtlan.jpg"
+        }
+    }
+]
