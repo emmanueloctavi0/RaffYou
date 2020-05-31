@@ -34,6 +34,12 @@ class Provider(BaseModel):
         blank=True
     )
 
+    keywords = models.CharField(
+        _('Palabras clave de búsqueda'),
+        max_length=255,
+        blank=True
+    )
+
     @property
     def comments(self):
         """Return all comments and score"""

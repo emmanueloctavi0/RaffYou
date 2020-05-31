@@ -13,7 +13,7 @@ from core.utils import random_pk_list
 
 class ProductsHomeView(ListView):
     model = Product
-    paginate_by = 3
+    paginate_by = 6
     ordering = ['created_at']
 
     def get_queryset(self):
@@ -27,7 +27,8 @@ class ProductsHomeView(ListView):
             Q(name__icontains=query) |
             Q(tags__value__icontains=query) |
             Q(tags__description__icontains=query) |
-            Q(description__icontains=query)
+            Q(description__icontains=query) |
+            Q(keywords__icontains=query)
         )
 
     def get_context_data(self):
@@ -39,7 +40,8 @@ class ProductsHomeView(ListView):
             context['search'] = f'q={query}'
             context['providers'] = providers.filter(
                 Q(name__icontains=query) |
-                Q(description__icontains=query)
+                Q(description__icontains=query) |
+                Q(keywords__icontains=query)
             )[:3]
         else:
             context['providers'] = providers.filter(

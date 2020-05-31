@@ -42,6 +42,12 @@ class Product(BaseModel):
 
     tags = models.ManyToManyField(ProductTag, blank=True)
 
+    keywords = models.CharField(
+        _('Palabras clave de búsqueda'),
+        max_length=255,
+        blank=True
+    )
+
     def __str__(self):
         return self.name
 

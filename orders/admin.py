@@ -39,7 +39,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     list_editable = ['status',]
 
-    readonly_fields = ('name', '_address')
+    readonly_fields = ('name', '_address', 'comment')
 
     exclude = ['user', 'address']
 

@@ -46,6 +46,7 @@ class CartResumeView(LoginRequiredMixin, View):
         order = Order.objects.create(
             user=request.user,
             address=order_address,
+            comment=request.POST.get('comment', '')
         )
 
         # Set order products
