@@ -1,53 +1,34 @@
 {% if is_paginated %}
-    <hr>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center pagination-sm">
-            {% if page_obj.has_previous %}
-            <!-- If it ain't a search result display, don't append the search query
-                to the URL. -->
-            {% if not search %}
-            <li class="page-item">
-                <a class="page-link" href="{{ request.path }}?page={{ page_obj.previous_page_number }}"
-                    tabindex="-1">Anterior</a>
+<nav aria-label="Page navigation example">
+    <ul class="pagination pagination-sm justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a
+                class="page-link"
+                href="?page={{ page_obj.previous_page_number }}&{{ search }}"
+                >Anterior</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Anterior</a>
+        </li>
+      {% endif %}
+      {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+            <li class="page-item active active">
+                <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
             </li>
-            {% else %}
-            <!-- Append the searched query to the URL, so that on a search results page,
-                the pagination don't revert to listing all the listview items. -->
-            <li class="page-item">
-                <a class="page-link" href="{{ request.path }}?{{search}}&page={{ page_obj.previous_page_number }}"
-                    tabindex="-1">Anterior</a>
-            </li>
-            {% endif %}
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Anterior</a>
-            </li>
-            {% endif %}
-            {% for object in page_obj.paginator.page_range %}
-                {% if not search %}
-                    <li class="page-item"><a class="page-link"
-                            href="{{ request.path }}?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
-                {% else %}
-                    <li class="page-item"><a class="page-link"
-                        href="{{ request.path }}?{{ search }}&page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
-                {% endif %}
-            {% endfor %}
-            {% if page_obj.has_next %}
-            {% if not search %}
-            <li class="page-item">
-                <a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}">Siguiente</a>
-            </li>
-            {% else %}
-            <li class="page-item">
-                <a class="page-link"
-                    href="{{ request.path }}?{{search}}&page={{ page_obj.next_page_number }}">Siguiente</a>
-            </li>
-            {% endif %}
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" href="#">Siguiente</a>
-            </li>
-            {% endif %}
-        </ul>
-    </nav>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}&{{ search }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&{{ search }}">Siguiente</a></li>
+      {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Siguiente</a>
+        </li>
+      {% endif %}
+    </ul>
+</nav>
 {% endif %}

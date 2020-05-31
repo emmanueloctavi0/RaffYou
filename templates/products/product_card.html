@@ -7,15 +7,15 @@
             <img class="card-img-top" src="{% static 'img/sin_foto.png' %}" alt="product.name">
         {% endif %}
         <div class="card-body text-center">
-            <h5 class="card-title text-primary font-weight-bold">{{ product.name }} {{ product.productprice_set.first.description }}</h5>
+            <h5 class="card-title text-primary font-weight-bold">{{ product.name }}</h5>
             <p class="card-text">{{ product.provider.name }}</p>
             <p class="card-text price">${{ product.productprice_set.first.price }}</p>
         </div>
     </a>
-    <form class="cart-product-widget text-center card-footer">
+    <!-- <form class="cart-product-widget text-center card-footer">
         <input type="hidden" name="product" value="{{ product.productprice_set.first.id }}">
         <button class="btn btn-primary text-white" type="submit">
             Agregar al carrito
         </button>
-    </form>
+    </form> -->
 </div>

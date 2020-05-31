@@ -12,7 +12,8 @@
         </div>
         <div class="col-sm">
             <h3>{{ object.name }}</h3>
-            <p>{{ object.description }}</p>
+            <p class="mb-0">{{ object.description }}</p>
+            <small class="text-info">Vendido por: <a target="_blank" href="{% url 'products:provider-detail' object.provider.id %}">{{ object.provider.name }}</a></small>
             <form class="cart-product-widget">
                 <div class="form-group col-8 my-3 mx-auto">
                     <select name="product" class="form-control">
