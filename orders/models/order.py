@@ -51,6 +51,12 @@ class Order(BaseModel):
         default=Status.STARTED,
     )
 
+    comment = models.TextField(
+        _('Comentarios adicionales'),
+        max_length=300,
+        blank=True,
+    )
+
     @property
     def total_price(self):
         """Cart total price"""
