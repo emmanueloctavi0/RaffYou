@@ -16,7 +16,10 @@ class PriceInline(admin.StackedInline):
 
 class ProductAdmin(admin.ModelAdmin):
     """Product Admin"""
-    list_display = ('name', 'image',)
+    list_display = ('name', 'image', 'provider', 'is_active')
+    list_editable = ('is_active',)
+    list_filter = ('is_active', 'provider')
+    search_fields = ('name', 'description', 'keywords',)
 
     inlines = [
         PriceInline,
@@ -35,7 +38,11 @@ class ProviderAddressInline(admin.StackedInline):
 
 class ProviderAdmin(admin.ModelAdmin):
     """Providers Admin"""
-    list_display = ('name', 'image',)
+    list_display = ('name', 'image', 'is_active')
+    list_editable = ('is_active',)
+    list_filter = ('is_active',)
+    search_fields = ('name', 'description', 'keywords',)
+
     inlines = [
         ProviderAddressInline,
     ]

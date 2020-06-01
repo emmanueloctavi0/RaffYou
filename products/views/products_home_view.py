@@ -15,6 +15,8 @@ class ProductsHomeView(ListView):
     model = Product
     paginate_by = 6
     ordering = ['created_at']
+    queryset = Product.objects.filter(is_active=True)
+    queryset_provider = Provider.objects.filter(is_active=True)
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -34,7 +36,7 @@ class ProductsHomeView(ListView):
     def get_context_data(self):
         context = super().get_context_data()
         query = self.request.GET.get('q')
-        providers = Provider.objects.all()
+        providers = self.queryset_provider
 
         if query:
             context['search'] = f'q={query}'

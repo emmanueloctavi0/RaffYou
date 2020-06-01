@@ -40,6 +40,11 @@ class Provider(BaseModel):
         blank=True
     )
 
+    is_active = models.BooleanField(
+        _('Proveedor activo'),
+        default=True
+    )
+
     @property
     def comments(self):
         """Return all comments and score"""

@@ -21,6 +21,7 @@ def cart_view(request):
 
     products = Product.objects.filter(
         id__in=random_pk_list(Product, 3),
+        is_active=True
     ).exclude(
         image=''
     )
