@@ -19,7 +19,8 @@ class ProductsHomeView(ListView):
     queryset_provider = Provider.objects.filter(is_active=True)
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().order_by('?')
+
         try:
             query = self.request.GET['q']
         except MultiValueDictKeyError:
