@@ -48,6 +48,11 @@ class Product(BaseModel):
         blank=True
     )
 
+    is_active = models.BooleanField(
+        _('Producto activo'),
+        default=True
+    )
+
     def __str__(self):
         return self.name
 

@@ -18,12 +18,15 @@ from django.db import IntegrityError
 
 class ProviderDetailView(DetailView):
     model = Provider
+    queryset_product = Product.objects.filter(is_active=True)
+    queryset = Provider.objects.filter(is_active=True)
 
     def get_products_list(self):
         """
         Get the products from provider with a paginator
         """
-        products = Product.objects.filter(
+        products = self.queryset_product
+        products = products.filter(
             provider=self.get_object()
         )
         paginator = Paginator(products, 3) # Show 25 contacts per page.

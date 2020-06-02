@@ -6,12 +6,12 @@
         {% else %}
             <img class="card-img-top" src="{% static 'img/sin_foto.png' %}" alt="product.name">
         {% endif %}
+    </a>
         <div class="card-body text-center">
-            <h5 class="card-title text-primary font-weight-bold">{{ product.name }}</h5>
-            <p class="card-text">{{ product.provider.name }}</p>
+            <a href="{% url 'products:product-detail' product.id%}" class="card-title h5 text-primary font-weight-bold">{{ product.name }}</a>
+            <a href="{% url 'products:provider-detail' product.provider.id %}" class="card-text d-block text-info">{{ product.provider.name }}</a>
             <p class="card-text price">${{ product.productprice_set.first.price }}</p>
         </div>
-    </a>
     <!-- <form class="cart-product-widget text-center card-footer">
         <input type="hidden" name="product" value="{{ product.productprice_set.first.id }}">
         <button class="btn btn-primary text-white" type="submit">
