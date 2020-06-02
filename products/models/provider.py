@@ -2,6 +2,8 @@
 # Django
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 # Models
 from core.models import AddressBaseModel, BaseModel
@@ -82,3 +84,16 @@ class ProviderAddress(AddressBaseModel):
 
     def __str__(self):
         return f'{self.provider.name} - {self.zip_code}'
+
+
+@receiver(pre_save, sender=Provider)
+def handler_is_active(sender, instance, **kwargs):
+    """When a provider is inactive all their products change to inactive"""
+    try:
+        current_instance = sender.objects.get(id=instance.id)
+        if instance.is_active != current_instance.is_active:
+            products = instance.product_set.all().update(
+                is_active=instance.is_active
+            )
+    except instance.DoesNotExist:
+        pass
