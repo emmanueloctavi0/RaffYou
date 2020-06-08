@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib.auth import get_user_model, login
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.contrib import messages
 
 # Utilities
 from uuid import uuid4
@@ -72,13 +73,23 @@ def callback_view(request):
         return redirect('products:home')
     except User.DoesNotExist:
         # Create new user
-        user = User.objects.create_user(
-            first_name=user_info.get('first_name'),
-            last_name=user_info.get('last_name'),
-            facebook_id=user_info.get('id'),
-            email=user_info.get('email'),
-            password=uuid4().hex
-        )
+        try:
+            user = User.objects.create_user(
+                first_name=user_info.get('first_name'),
+                last_name=user_info.get('last_name'),
+                facebook_id=user_info.get('id'),
+                email=user_info.get('email'),
+                password=uuid4().hex
+            )
+        except ValueError:
+            messages.error(request, 
+                ('Parece que tu cuenta de Facebook no cuenta con un correo electrónico, '
+                'para nuestro servicio es necesario que nos lo proporciones. '
+                '¡Estamos trabajando arduamente para que puedas unirte a nosotros de otras formas! '
+                'Ponte en contacto a través de nuestra página de Facebook')
+            )
+            return redirect('products:home')
+
         user.save_profile_picture(user_info['picture']['data']['url'])
         login(request, user)
 
