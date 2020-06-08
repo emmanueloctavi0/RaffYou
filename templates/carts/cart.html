@@ -11,10 +11,10 @@
                     <h6>Productos ({{ request.user.cart.count_items }}):
                         $ {{ request.user.cart.total_price }}
                     </h6>
-                    <p class="text-success">Costo de envío: <strong>$20</strong></p>
+                    <p class="text-success">Costo de envío: <strong>$15</strong></p>
                     <h5>
                         Total en efectivo:
-                        $ {{ request.user.cart.total_price|add:"20" }}
+                        $ {{ request.user.cart.total_price|add:"15" }}
                     </h5>
                     <small class="text-danger">Es todo lo que te cobrará el repartidor ;) cualquier incidente reportalo en nuestra página de Facebook </small>
                 </div>

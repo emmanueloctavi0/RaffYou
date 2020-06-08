@@ -14,9 +14,12 @@
                             ${{ cart_product.sub_total_price }}
                         </li>
                     {% endfor %}
-                    <li>Costo de envío: $20</li>
+                    <li>Costo de envío: $15</li>
                 </ul>
-                <p class="price">Total: ${{ cart.total_price|add:"20" }}</p>
+                <p class="price">Total: ${{ cart.total_price|add:"15" }}</p>
+                <p class="text-info">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal">¿Tienes un código promocional?</a>
+                </p>
             </div>
             <div class="col-sm-6">
                 <h5>Dirección</h5>
