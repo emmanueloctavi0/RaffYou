@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.forms.models import model_to_dict
+from django.core.mail import send_mail
 
 # Models
 from carts.models import Cart
@@ -57,6 +58,17 @@ class CartResumeView(LoginRequiredMixin, View):
                 amount=cart_product.amount,
             )
         cart.delete()
+
+        send_mail(
+            'Nuevo pedido en RaffYou',
+            'Hay un pedido en RaffYou, entra a https://raffyou.com/admin/',
+            'support@raffyou.com',
+            [
+                'emmanueloctaviomc@gmail.com',
+                'chavi.sennin@gmail.com',
+                'luisescorpions79@gmail.com',
+            ],
+        )
 
         messages.success(request, '!Tu pedido ha sido solicitado!')
         return redirect('orders:order-list')
