@@ -3,11 +3,14 @@
 from django.shortcuts import redirect, HttpResponse
 from django.conf import settings
 from django.contrib.auth import get_user_model, login
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 # Utilities
 from uuid import uuid4
 from urllib.parse import urlencode
 from users.utils import get_tokens, get_user_info
+from django.utils.html import strip_tags
 
 
 User = get_user_model()
@@ -78,4 +81,16 @@ def callback_view(request):
         )
         user.save_profile_picture(user_info['picture']['data']['url'])
         login(request, user)
+
+        # Send email
+        subject = '¡Bienvenido a Raffyou!'
+        html_message = render_to_string('mails/welcome.html')
+        plain_message = strip_tags(html_message)
+        from_email = 'Equipo Raffyou support@raffyou.com'
+        to = user.email
+        try:
+            send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+        except:
+            pass
+
         return redirect('products:home')
