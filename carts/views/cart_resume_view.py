@@ -1,15 +1,17 @@
 
 # Django
 from django.views.generic import View
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.forms.models import model_to_dict
-from django.core.mail import send_mail
 
 # Models
 from carts.models import Cart
 from orders.models import Order, OrderProduct, OrderAddress
+
+# Tasks
+from carts.tasks import create_order
 
 
 class CartResumeView(LoginRequiredMixin, View):
@@ -32,43 +34,31 @@ class CartResumeView(LoginRequiredMixin, View):
 
     def post(self, request):
         try:
-            cart_products = request.user.cart.cartproduct_set.all()
             cart = request.user.cart
         except Cart.DoesNotExist:
             return redirect('carts:index')
-        
+
         # Address order
         order_address = model_to_dict(cart.address)
         order_address.pop('user')
         order_address.pop('id')
-        order_address = OrderAddress.objects.create(**order_address)
 
         # Create order
-        order = Order.objects.create(
-            user=request.user,
-            address=order_address,
-            comment=request.POST.get('comment', '')
+        create_order.delay(
+            order_address,
+            request.user.id,
+            cart.id,
+            request.POST.get('comment', '')
         )
 
-        # Set order products
-        for cart_product in cart_products:
-            order_product = OrderProduct.objects.create(
-                order=order,
-                product=cart_product.product,
-                amount=cart_product.amount,
-            )
-        cart.delete()
-
-        send_mail(
-            'Nuevo pedido en RaffYou',
-            'Hay un pedido en RaffYou, entra a https://raffyou.com/admin/',
-            'support@raffyou.com',
-            [
-                'emmanueloctaviomc@gmail.com',
-                'chavi.sennin@gmail.com',
-                'luisescorpions79@gmail.com',
-            ],
+        # Send messages
+        order_url = reverse('orders:order-list')
+        messages.success(
+            request,
+            ('!Tu pedido ha sido solicitado!. '
+            'Visita la sección '
+            f'<a href="{order_url}"><strong>Mis pedidos</strong></a> '
+            'para conocer el estatus de tus solicitudes')
         )
 
-        messages.success(request, '!Tu pedido ha sido solicitado!')
-        return redirect('orders:order-list')
+        return redirect('products:home')

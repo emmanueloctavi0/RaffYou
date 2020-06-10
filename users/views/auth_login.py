@@ -11,7 +11,7 @@ from urllib.parse import urlencode
 from users.utils import get_tokens, get_user_info
 
 # Tasks
-from users.tasks import send_email_html
+from core.tasks import send_email_html
 
 
 User = get_user_model()
