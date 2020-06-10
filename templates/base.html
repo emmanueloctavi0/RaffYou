@@ -1,6 +1,5 @@
 {% load sass_tags %}
 {% load static %}
-{% load tz %}
 
 <!DOCTYPE html>
 <html lang="es">
@@ -24,10 +23,8 @@
     {% endblock%}
 
     <div class="container">
-        {% timezone "America/Mexico_City" %}
-            {% block content %}
-            {% endblock %}
-        {% endtimezone %}
+        {% block content %}
+        {% endblock %}
     </div>
     {% include 'generals/footer.html' %}
 </body>
