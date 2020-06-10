@@ -1,17 +1,17 @@
 
 # Django
-from django.shortcuts import redirect, HttpResponse
+from django.shortcuts import redirect
 from django.conf import settings
 from django.contrib.auth import get_user_model, login
-from django.template.loader import render_to_string
-from django.core.mail import send_mail
 from django.contrib import messages
 
 # Utilities
 from uuid import uuid4
 from urllib.parse import urlencode
 from users.utils import get_tokens, get_user_info
-from django.utils.html import strip_tags
+
+# Tasks
+from users.tasks import send_email_html
 
 
 User = get_user_model()
@@ -45,7 +45,8 @@ def callback_view(request):
     auth_state = request.session.get('auth_state')
 
     if not state or auth_state != state:
-        return HttpResponse("state doesn't exists")
+        messages.error(request, 'Ha ocurrido un error inesperado.')
+        return redirect('users:signup')
 
     if error:
         return redirect('users:signup')
@@ -95,13 +96,8 @@ def callback_view(request):
 
         # Send email
         subject = '¡Bienvenido a Raffyou!'
-        html_message = render_to_string('mails/welcome.html')
-        plain_message = strip_tags(html_message)
+        template = 'mails/welcome.html'
         from_email = 'Equipo Raffyou support@raffyou.com'
         to = user.email
-        try:
-            send_mail(subject, plain_message, from_email, [to], html_message=html_message)
-        except:
-            pass
-
+        send_email_html.delay(subject, template, from_email, [to])
         return redirect('products:home')

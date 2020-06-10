@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     # 3th libs
     'sass_processor',
     'rest_framework',
+    'django_celery_results',
 
     # Local apps
     'core',
@@ -229,3 +230,8 @@ AUTH_TOKEN_URL = os.getenv('AUTH_TOKEN_URL')
 
 # Messages tags
 MESSAGE_TAGS = {message_constants.ERROR: 'danger'}
+
+# Celery
+# CELERY_RESULT_BACKEND = 'db+sqlite:///results.db'
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
