@@ -1,5 +1,6 @@
+from __future__ import absolute_import, unicode_literals
 
-from celery import task
+from celery import shared_task
 
 # Models
 from orders.models import OrderAddress, Order, OrderProduct
@@ -9,7 +10,7 @@ from carts.models import Cart
 from core.tasks import send_email_text
 
 
-@task
+@shared_task
 def create_order(address_dict, user_id, cart_id, comment):
     """Create a user order"""
     order_address = OrderAddress.objects.create(**address_dict)
