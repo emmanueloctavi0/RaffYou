@@ -89,6 +89,9 @@ def handler_status(sender, instance, **kwargs):
     elif instance.status == Order.Status.FINISHED.value:
         subject = '¡Entregamos tu pedido!'
         template = 'mails/order_success.html'
+    elif instance.status == Order.Status.ON_WAY.value:
+        subject = '¡Tu pedido va en camino!'
+        template = 'mails/order_sent.html'
     elif instance.status == Order.Status.CANCELLED.value:
         subject = 'Tu pedido ha sido cancelado :C'
         template = 'mails/order_cancel.html'
