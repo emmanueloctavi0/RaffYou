@@ -19,5 +19,7 @@ urlpatterns = [
     path('direccion/', views.CartAddressView.as_view(), name='cart-address'),
     path('resumen/', views.CartResumeView.as_view(), name='cart-resume'),
     path('delete/<int:cart_product>/', views.cart_product_delete_view, name='delete'),
+    # API
     path('api/', include(router.urls)),
+    path('api/check_code/', views.CheckCodeView.as_view(), name='check-code'),
 ]
