@@ -1,12 +1,16 @@
 
+import { getCookie } from './utils';
+import { showMessage } from './messages';
+import { ADD_PRODUCT_URL, LOGIN_URL } from './config';
 
-const headers = {
-    credentials: 'include',
-    'X-CSRFToken': getCookie('csrftoken'),
-    'Content-Type': 'application/json',
-}
 
 async function addProduct(body) {
+    const headers = {
+        credentials: 'include',
+        'X-CSRFToken': getCookie('csrftoken'),
+        'Content-Type': 'application/json',
+    }
+
     const data = {
         headers,
         body: JSON.stringify(body),
