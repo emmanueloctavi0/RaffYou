@@ -2,13 +2,17 @@
 # Django
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Models
 from core.models import BaseModel, AddressBaseModel
 from users.models import Address
 from products.models import ProductPrice
 from django.contrib.auth import get_user_model
+
+# Task
+from core.tasks import send_email_html
 
 
 User = get_user_model()
@@ -72,3 +76,31 @@ class Order(BaseModel):
     class Meta:
         verbose_name = _('Pedido')
         verbose_name_plural = _('Pedidos')
+
+
+@receiver(post_save, sender=Order)
+def handler_status(sender, instance, **kwargs):
+    """Send an email when the order status change"""
+    from_email = 'Equipo RaffYou'
+    recipient_list = [instance.user.email]
+    if instance.status == Order.Status.STARTED.value:
+        subject = '¡Recibimos tu pedido!'
+        template = 'mails/order_received.html'
+    elif instance.status == Order.Status.FINISHED.value:
+        subject = '¡Entregamos tu pedido!'
+        template = 'mails/order_success.html'
+    elif instance.status == Order.Status.ON_WAY.value:
+        subject = '¡Tu pedido va en camino!'
+        template = 'mails/order_sent.html'
+    elif instance.status == Order.Status.CANCELLED.value:
+        subject = 'Tu pedido ha sido cancelado :C'
+        template = 'mails/order_cancel.html'
+    else:
+        return
+
+    send_email_html.delay(
+        subject,
+        template,
+        from_email,
+        recipient_list
+    )

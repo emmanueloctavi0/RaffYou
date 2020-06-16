@@ -1,5 +1,7 @@
 
-from celery import task
+from __future__ import absolute_import, unicode_literals
+
+from celery import shared_task
 
 # Django
 from django.core.mail import send_mail
@@ -7,7 +9,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 
-@task
+@shared_task
 def send_email_html(subject, template, from_email, recipient_list):
     html_message = render_to_string(template)
     plain_message = strip_tags(html_message)
@@ -26,7 +28,7 @@ def send_email_html(subject, template, from_email, recipient_list):
     }
 
 
-@task
+@shared_task
 def send_email_text(subject, content, from_email, recipient_list):
 
     send_mail(
@@ -40,3 +42,9 @@ def send_email_text(subject, content, from_email, recipient_list):
         'subjects': subject,
         'recipients': recipient_list,
     }
+
+
+@shared_task
+def debug_task(x, y):
+    print(f'Debug task celery args: {x} + {y}')
+    return x + y
