@@ -15,10 +15,10 @@
       {% endif %}
       {% for i in page_obj.paginator.page_range %}
         {% if page_obj.number == i %}
-            <li class="page-item active active">
-                <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
-            </li>
-        {% else %}
+          <li class="page-item active active">
+            <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+          </li>
+        {% elif i > page_obj.number|add:'-3' and i < page_obj.number|add:'3'%}
           <li class="page-item"><a class="page-link" href="?page={{ i }}&{{ search }}">{{ i }}</a></li>
         {% endif %}
       {% endfor %}
@@ -31,4 +31,7 @@
       {% endif %}
     </ul>
 </nav>
+<div class="col-12">
+  <p class="text-muted text-center">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.</p>
+</div>
 {% endif %}

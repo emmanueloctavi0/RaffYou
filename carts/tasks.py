@@ -9,16 +9,20 @@ from carts.models import Cart
 # Task
 from core.tasks import send_email_text
 
+# Utilities
+from carts.utils import check_code
+
 
 @shared_task
-def create_order(address_dict, user_id, cart_id, comment):
+def create_order(address_dict, user_id, cart_id, comment, code=''):
     """Create a user order"""
     order_address = OrderAddress.objects.create(**address_dict)
 
     order = Order.objects.create(
         user_id=user_id,
         address=order_address,
-        comment=comment
+        comment=comment,
+        shipping_price=15
     )
 
     cart = Cart.objects.get(id=cart_id)
@@ -31,6 +35,12 @@ def create_order(address_dict, user_id, cart_id, comment):
             product=cart_product.product,
             amount=cart_product.amount,
         )
+
+    # Set the price and discount if exists
+    order.price = order.price_calc
+    is_valid, total_price = check_code(code, order.price)
+    order.total_price = total_price
+    order.save()
 
     send_email_text.delay(
         'Nuevo pedido en RaffYou',

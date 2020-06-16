@@ -48,7 +48,8 @@ class CartResumeView(LoginRequiredMixin, View):
             order_address,
             request.user.id,
             cart.id,
-            request.POST.get('comment', '')
+            request.POST.get('comment', ''),
+            request.POST.get('code', '')
         )
 
         # Send messages

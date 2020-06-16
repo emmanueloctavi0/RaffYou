@@ -61,14 +61,35 @@ class Order(BaseModel):
         blank=True,
     )
 
+    total_price = models.DecimalField(
+        _('Precio total con el descuento'),
+        max_digits=6,
+        decimal_places=2,
+        default=0
+    )
+
+    price = models.DecimalField(
+        _('Precio de los productos y del envío'),
+        max_digits=6,
+        decimal_places=2,
+        default=0
+    )
+
+    shipping_price = models.DecimalField(
+        _('Precio de envío'),
+        max_digits=6,
+        decimal_places=2,
+        default=0
+    )
+
     @property
-    def total_price(self):
-        """Cart total price"""
+    def price_calc(self):
+        """Cart price sum"""
         order_products = self.orderproduct_set.all()
         price = 0
         for order_product in order_products:
             price += order_product.sub_total_price
-        return price
+        return price + self.shipping_price
 
     def __str__(self):
         return f'{self.address.telephone} {self.products.first()}...'

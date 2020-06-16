@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+
 {% load user_tags %}
+{% load static %}
+
 {% block content %}
     <h1 class="my-3">Resumen del pedido</h1>
     <div class="shadow bg-white rounded">
@@ -16,7 +19,10 @@
                     {% endfor %}
                     <li>Costo de envío: $15</li>
                 </ul>
-                <p class="price">Total: ${{ cart.total_price|add:"15" }}</p>
+                <p class="price" id="price">Total: <span>${{ cart.total_price|add:"15" }}</span></p>
+                <p type="button" class="text-info" data-toggle="modal" data-target="#modalCheckCode">
+                    ¿Tienes un código de promoción?
+                </p>
             </div>
             <div class="col-sm-6">
                 <h5>Dirección</h5>
@@ -34,16 +40,46 @@
         </div>
         <div class="row p-3">
             <div class="col-12">
-                <form method="post">
+                <form method="post" id="formResume">
                     <div class="form-group">
                         <label for="comments">Comentarios adicionales</label>
                         <textarea class="form-control" name="comment" id="comments" rows="3"></textarea>
-                      </div>
+                    </div>
                     {% csrf_token %}
                     <button class="btn btn-send" type="submit">Pedir</button>
                 </form>
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalCheckCode" tabindex="-1" role="dialog" aria-labelledby="modalCheckCodeTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Verificar código de descuento</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form class="check-code" action="{% url 'carts:check-code' %}" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col">
+                            <input name="code" type="text" class="form-control" required placeholder="Ingresa aquí tu código de descuento">
+                            <input type="hidden" name="price" value="{{ cart.total_price|add:"15" }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Verificar</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+{% endblock %}
 
+{% block js %}
+    <script src="{% static 'js/check_code.js' %}"></script>
 {% endblock %}
