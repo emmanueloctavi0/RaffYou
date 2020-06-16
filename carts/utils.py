@@ -2,6 +2,9 @@
 # Django
 from carts.models import PromotionalCode
 
+# Utilities
+import datetime
+
 
 def check_code(code, price):
     """
@@ -10,7 +13,8 @@ def check_code(code, price):
     try:
         promotional_code = PromotionalCode.objects.get(
             code=code,
-            is_active=True
+            is_active=True,
+            expiry_datetime__gte=datetime.datetime.now()
         )
     except PromotionalCode.DoesNotExist:
         return False, price
