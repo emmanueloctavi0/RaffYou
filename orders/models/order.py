@@ -100,11 +100,11 @@ class Order(BaseModel):
 
 
 @receiver(post_save, sender=Order)
-def handler_status(sender, instance, **kwargs):
+def handler_status(sender, instance, created, **kwargs):
     """Send an email when the order status change"""
     from_email = 'Equipo RaffYou'
     recipient_list = [instance.user.email]
-    if instance.status == Order.Status.STARTED.value:
+    if instance.status == Order.Status.STARTED.value and created:
         subject = '¡Recibimos tu pedido!'
         template = 'mails/order_received.html'
     elif instance.status == Order.Status.FINISHED.value:
