@@ -1,4 +1,7 @@
 
+import { htmlToElement } from './utils';
+
+
 function getElementMessage(message, type='success') {
     const template = `
         <div class="alert alert-${type} alert-dismissible fade show fixed-top m-4" role="alert">
@@ -15,4 +18,9 @@ function getElementMessage(message, type='success') {
 function showMessage(message, type='success') {
     const element = getElementMessage(message, type);
     document.body.appendChild(element)
+}
+
+export {
+    getElementMessage,
+    showMessage
 }

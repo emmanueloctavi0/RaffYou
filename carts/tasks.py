@@ -4,7 +4,7 @@ from celery import shared_task
 
 # Models
 from orders.models import OrderAddress, Order, OrderProduct
-from carts.models import Cart
+from carts.models import Cart, PromotionalCode
 
 # Task
 from core.tasks import send_email_text
@@ -41,6 +41,10 @@ def create_order(address_dict, user_id, cart_id, comment, code=''):
     is_valid, total_price = check_code(code, order.price)
     order.total_price = total_price
     order.save()
+
+    if is_valid:
+        p_code = PromotionalCode.objects.get(code=code)
+        p_code.update_use()
 
     send_email_text.delay(
         'Nuevo pedido en RaffYou',

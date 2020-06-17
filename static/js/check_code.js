@@ -1,6 +1,17 @@
 
+import { showMessage } from './messages';
+import { getCookie } from './utils';
+import { CHECK_CODE } from './config';
+
+
 // Verify promotional code
 async function checkCode(body) {
+
+    const headers = {
+        credentials: 'include',
+        'X-CSRFToken': getCookie('csrftoken'),
+        'Content-Type': 'application/json',
+    }
 
     const data = {
         headers,

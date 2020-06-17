@@ -24,3 +24,9 @@ function htmlToElement(html) {
     template.innerHTML = html;
     return template.content.firstChild;
 }
+
+
+export {
+    getCookie,
+    htmlToElement
+}

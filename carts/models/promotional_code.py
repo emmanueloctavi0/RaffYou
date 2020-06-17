@@ -41,10 +41,26 @@ class PromotionalCode(BaseModel):
         _('Fecha y hora de vencimiento')
     )
 
+    max_uses = models.IntegerField(
+        _('Máximo de usos'),
+        default=10,
+    )
+
+    uses_count = models.IntegerField(
+        _('Veces usado'),
+        default=0
+    )
+
     is_active = models.BooleanField(
         _('Promoción válida'),
         default=True,
     )
+
+    def update_use(self):
+        self.uses_count += 1
+        if self.uses_count >= self.max_uses:
+            self.is_active = False
+        self.save()
 
     def __str__(self):
         return f'{self.code} - {self.name}'
