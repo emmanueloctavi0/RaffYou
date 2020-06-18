@@ -11,7 +11,7 @@ class AddressForm(forms.ModelForm):
 
     references = forms.CharField(
         label=_('Ayuda al repartido a encontrar tu domicilio o el producto que necesitas'),
-        min_length=15
+        required=False
     )
 
     class Meta:
