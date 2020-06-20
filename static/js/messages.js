@@ -18,6 +18,9 @@ function getElementMessage(message, type='success') {
 function showMessage(message, type='success') {
     const element = getElementMessage(message, type);
     document.body.appendChild(element)
+    setTimeout(() => {
+        $(element).alert('close');
+    }, 5000);
 }
 
 export {
