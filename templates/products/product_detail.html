@@ -2,7 +2,12 @@
 {% load static %}
 
 {% block content %}
-    <div class="row mt-5 text-center">
+    <div class="row mt-3">
+        <div class="col-12">
+            <small class="text-success">Si necesitas salsa extra, sin jitomate o alguna otra petición, lo puedes hacer al momento de confirmar tu pedido.</small>
+        </div>
+    </div>
+    <div class="row mt-3 text-center">
         <div class="col-sm mb-4">
             {% if object.image %}
                 <img class="max-w-8 br-8 rounded shadow w-100" src="{{ object.image.url }}" alt="{{ objects.description }}">
@@ -14,6 +19,10 @@
             <h3>{{ object.name }}</h3>
             <p class="mb-0">{{ object.description }}</p>
             <small class="text-info">Vendido por: <a target="_blank" href="{% url 'products:provider-detail' object.provider.id %}">{{ object.provider.name }}</a></small>
+            <p class="text-success m-0">Horario de servicio:</p>
+            {% for schedule in object.provider.scheduleday_set.all %}
+                <small class="text-success m-0">{{ schedule }}</small><br>
+            {% endfor%}
             <form class="cart-product-widget">
                 <div class="form-group col-8 my-3 mx-auto">
                     <select name="product" class="form-control">

@@ -1,6 +1,6 @@
 
 # Django
-from django.shortcuts import redirect
+from django.shortcuts import redirect, reverse
 from django.conf import settings
 from django.contrib.auth import get_user_model, login
 from django.contrib import messages
@@ -21,6 +21,9 @@ def auth_login_view(request):
     """Build the Facebook login url"""
     # Set cookie
     auth_state = uuid4().hex
+
+    next_url = request.GET.get('next', reverse('products:home'))
+    request.session['next_url'] = next_url
     request.session['auth_state'] = auth_state
 
     params = urlencode({
@@ -42,7 +45,12 @@ def callback_view(request):
     error = request.GET.get('error')
     code = request.GET.get('code')
 
-    auth_state = request.session.get('auth_state')
+    try:
+        auth_state = request.session.pop('auth_state')
+        next_url = request.session.pop('next_url')
+    except KeyError:
+        messages.warning(request, 'Por razones de seguridad vuelva a iniciar sesión por favor.')
+        return redirect('users:signup')
 
     if not state or auth_state != state:
         messages.error(request, 'Ha ocurrido un error inesperado.')
@@ -71,7 +79,7 @@ def callback_view(request):
         user.email = user_info.get('email')
         user.save_profile_picture(user_info['picture']['data']['url'])
         login(request, user)
-        return redirect('products:home')
+        return redirect(next_url)
     except User.DoesNotExist:
         # Create new user
         try:
@@ -100,4 +108,4 @@ def callback_view(request):
         from_email = 'Equipo Raffyou support@raffyou.com'
         to = user.email
         send_email_html.delay(subject, template, from_email, [to])
-        return redirect('products:home')
+        return redirect(next_url)

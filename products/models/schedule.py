@@ -46,4 +46,7 @@ class ScheduleDay(BaseModel):
     )
 
     def __str__(self):
-        return f'{self.name}: {self.start_time}-{self.end_time}'
+        day = self.get_name_display()
+        start_time = self.start_time.strftime('%I:%M %p')
+        end_time = self.end_time.strftime('%I:%M %p')
+        return f'{day} {start_time} - {end_time}'
