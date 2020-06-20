@@ -14,6 +14,10 @@
             <h3>{{ object.name }}</h3>
             <p class="mb-0">{{ object.description }}</p>
             <small class="text-info">Vendido por: <a target="_blank" href="{% url 'products:provider-detail' object.provider.id %}">{{ object.provider.name }}</a></small>
+            <p class="text-success m-0">Horario de servicio:</p>
+            {% for schedule in object.provider.scheduleday_set.all %}
+                <small class="text-success m-0">{{ schedule }}</small><br>
+            {% endfor%}
             <form class="cart-product-widget">
                 <div class="form-group col-8 my-3 mx-auto">
                     <select name="product" class="form-control">
