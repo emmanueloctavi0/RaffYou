@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Carrito</h1>
+    <h1 class="pt-3">Carrito</h1>
     {% if cart_products %}
         {% for cart_product in cart_products %}
             {% include 'carts/cart_product_card.html' %}
