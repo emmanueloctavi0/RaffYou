@@ -53,6 +53,11 @@ class Product(BaseModel):
         default=True
     )
 
+    order = models.IntegerField(
+        _('Orden en el que deberían aparecer los productos en el home'),
+        default=1
+    )
+
     def __str__(self):
         return self.name
 
