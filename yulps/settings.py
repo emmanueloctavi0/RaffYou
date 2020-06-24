@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'rest_framework',
     'django_celery_results',
+    'debug_toolbar',
 
     # Local apps
     'core',
@@ -78,6 +79,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -85,6 +87,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'yulps.urls'
@@ -239,3 +242,8 @@ MESSAGE_TAGS = {message_constants.ERROR: 'danger'}
 # CELERY_RESULT_BACKEND = 'db+sqlite:///results.db'
 CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+
+# Debug toolbar
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
