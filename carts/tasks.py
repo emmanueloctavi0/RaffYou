@@ -41,6 +41,7 @@ def create_order(address_dict, user_id, cart_id, comment, code=''):
     is_valid, total_price = check_code(code, order.price)
     order.total_price = total_price
     order.save()
+    cart.delete()
 
     if is_valid:
         p_code = PromotionalCode.objects.get(code=code)
