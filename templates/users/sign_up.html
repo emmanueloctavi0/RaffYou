@@ -4,7 +4,7 @@
 <div class="content-center">
     <p class="text-info">Para hacer pedidos es necesario que te registres en nuestra plataforma.</p>
     <a href="{% url 'users:auth_login' %}?{{ request.GET.urlencode }}" class="btn-facebook my-5"> Iniciar sesión con Facebook</a>
-    <!-- <div class="card max-w-8 p-3">
+    <div class="card max-w-8 p-3">
         {% url 'users:login' as url_login %}
         {% if url_login == request.path %}
             <h1>Iniciar sesión</h1>
@@ -17,6 +17,6 @@
                 <button class="btn btn-success" type="submit">Enviar</button>
             </div>
         </form>
-    </div> -->
+    </div>
 </div>
 {% endblock %}
