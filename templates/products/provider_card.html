@@ -1,23 +1,21 @@
 {% load static %}
+{% load humanize %}
+
 <div class="card mx-auto" style="max-width: 300px;">
     <a href="{% url 'products:provider-detail' provider.id %}">
         {% if provider.image %}
-            <img class="card-img-top" src="{{ provider.image.url }}" alt="provider.name">
+            <img class="card-img-top" src="{% get_media_prefix %}{{ provider.image }}" alt="{{ provider.name }}">
         {% else %}
-            <img class="card-img-top" src="{% static 'img/sin_foto.png' %}" alt="provider.name">
+            <img class="card-img-top" src="{% static 'img/sin_foto.png' %}" alt="{{ provider.name }}">
         {% endif %}
         <div class="card-body text-center">
             <h5 class="card-title text-primary font-weight-bold">{{ provider.name }}</h5>
-            {% include 'products/components/only_score.html' with rate=provider.score.0 %}
-            <br>
-            {{ provider.score.1 }}
+            {% if provider.score__rate__avg %}
+                {% include 'products/components/only_score.html' with rate=provider.score__rate__avg|floatformat:"0" %}
+            {% else %}
+                {% include 'products/components/only_score.html' with rate="5" %}
+            {% endif %}
             <p>{{ provider.description }}</p>
-        </div>
-        <div class="card-footer">
-            Ubicación:
-            <small class="d-block">{{ provider.first_address.street_name }} #{{ provider.first_address.street_number}}</small>
-            <small class="d-block">{{ provider.first_address.colony }}</small>
-            <small class="d-block">{{ provider.first_address.zip_code }} - {{ provider.first_address.city }}</small>
         </div>
     </a>
 </div>

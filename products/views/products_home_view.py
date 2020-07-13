@@ -1,11 +1,11 @@
 
 # Django
 from django.views.generic import ListView
-from django.db.models import Q
+from django.db.models import Q, Min, Avg
 from django.utils.datastructures import MultiValueDictKeyError
 
 # Models
-from products.models import Product, Provider
+from products.models import Product, Provider, ProductPrice, ProductTag
 
 # Utilities
 from core.utils import random_pk_list
@@ -19,25 +19,35 @@ class ProductsHomeView(ListView):
     queryset_provider = Provider.objects.filter(is_active=True)
 
     def get_queryset(self):
-        queryset = super().get_queryset().order_by('order')
+        queryset = super().get_queryset()
 
         try:
             query = self.request.GET['q']
+            queryset = queryset.filter(
+                Q(name__icontains=query) |
+                Q(tags__value__icontains=query) |
+                Q(tags__description__icontains=query) |
+                Q(description__icontains=query) |
+                Q(keywords__icontains=query)
+            )
         except MultiValueDictKeyError:
-            return queryset
+            pass
 
-        return queryset.filter(
-            Q(name__icontains=query) |
-            Q(tags__value__icontains=query) |
-            Q(tags__description__icontains=query) |
-            Q(description__icontains=query) |
-            Q(keywords__icontains=query)
-        )
+        queryset = queryset.values(
+            'id', 'name', 'image', 'provider__id',
+            'provider__name', 'price_default'
+        ).annotate(Min('productprice__hierarchy')) \
+
+        return queryset
 
     def get_context_data(self):
         context = super().get_context_data()
         query = self.request.GET.get('q')
-        providers = self.queryset_provider
+        providers = self.queryset_provider.values(
+            'id', 'image', 'name',
+            'description',
+        ).annotate(Avg('score__rate'))
+        # context['cats'] = ProductTag.objects.all()
 
         if query:
             context['search'] = f'q={query}'
@@ -47,8 +57,6 @@ class ProductsHomeView(ListView):
                 Q(keywords__icontains=query)
             )[:3]
         else:
-            context['providers'] = providers.filter(
-                id__in=random_pk_list(Provider, 3),
-            )
+            context['providers'] = providers[:3]
 
         return context
