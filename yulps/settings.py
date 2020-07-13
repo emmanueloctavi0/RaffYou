@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_celery_results',
     'debug_toolbar',
+    'corsheaders',
 
     # Local apps
     'core',
@@ -84,6 +85,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -205,6 +207,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
+
+# Cors
+if DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
+else:
+    CORS_ORIGIN_WHITELIST = [
+        'https://raffyou.com',
+    ]
 
 
 # Custom user model
