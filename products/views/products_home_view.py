@@ -35,7 +35,7 @@ class ProductsHomeView(ListView):
         queryset = queryset.values(
             'id', 'name', 'image', 'provider__id',
             'provider__name', 'price_default'
-        ).annotate(Min('productprice__hierarchy')) \
+        ).annotate(Min('productprice__hierarchy'))
 
         return queryset
 

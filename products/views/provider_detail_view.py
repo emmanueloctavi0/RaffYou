@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.db.models import Min
 
 # Models
 from products.models import Provider, Score, Product
@@ -28,7 +29,11 @@ class ProviderDetailView(DetailView):
         products = self.queryset_product
         products = products.filter(
             provider=self.get_object()
-        )
+        ).values(
+            'id', 'name', 'image', 'provider__id',
+            'provider__name', 'price_default'
+        ).annotate(Min('productprice__hierarchy'))
+
         paginator = Paginator(products, 3) # Show 25 contacts per page.
 
         page_number = self.request.GET.get('page')
