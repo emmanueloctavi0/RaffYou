@@ -2,6 +2,7 @@
 # Django
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.db.models import Min
 
 # Models
 from carts.models import Cart
@@ -24,7 +25,10 @@ def cart_view(request):
         is_active=True
     ).exclude(
         image=''
-    )
+    ).values(
+        'id', 'name', 'image', 'provider__id',
+        'provider__name', 'price_default'
+    ).annotate(Min('productprice__hierarchy'))
 
     return render(request, 'carts/cart.html', {
         'cart_products': cart_products,

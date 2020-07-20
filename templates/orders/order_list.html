@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="my-3">Mis pedidos</h1>
+    <h1 class="mb-3 mt-5 pt-4">Mis pedidos</h1>
     {% for order in object_list %}
         {% include 'orders/order_card.html' %}
     {% empty %}
