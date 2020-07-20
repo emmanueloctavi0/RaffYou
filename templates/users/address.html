@@ -2,8 +2,7 @@
 {% load html_elements %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-12">
+        <div class="col-12 mt-5 pt-2">
             <h1 class="my-4">Agregar dirección</h1>
             <form class="card shadow p-4" method="post">
                 {% csrf_token %}
@@ -43,5 +42,4 @@
                 </div>
             </form>
         </div>
-    </div>
 {% endblock %}
