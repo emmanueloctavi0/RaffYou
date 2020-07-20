@@ -14,7 +14,6 @@ from core.utils import random_pk_list
 class ProductsHomeView(ListView):
     model = Product
     paginate_by = 6
-    ordering = ['created_at']
     queryset = Product.objects.filter(is_active=True)
     queryset_provider = Provider.objects.filter(is_active=True)
 
@@ -36,7 +35,7 @@ class ProductsHomeView(ListView):
         queryset = queryset.values(
             'id', 'name', 'image', 'provider__id',
             'provider__name', 'price_default'
-        ).annotate(Min('productprice__hierarchy')) \
+        ).annotate(Min('productprice__hierarchy'))
 
         return queryset
 
