@@ -63,12 +63,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     # 3th libs
     'sass_processor',
     'rest_framework',
     'django_celery_results',
     'debug_toolbar',
+    'corsheaders',
 
     # Local apps
     'core',
@@ -76,12 +78,14 @@ INSTALLED_APPS = [
     'products',
     'carts',
     'orders',
+    'api',
 ]
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -204,6 +208,14 @@ REST_FRAMEWORK = {
     ],
 }
 
+# Cors
+if DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
+else:
+    CORS_ORIGIN_WHITELIST = [
+        'https://raffyou.com',
+    ]
+
 
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
@@ -244,6 +256,11 @@ CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 
 # Debug toolbar
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+if DEBUG:
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
+
+    import socket
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS += [".".join(ip.split(".")[:-1] + ["1"]) for ip in ips]

@@ -47,6 +47,11 @@ class Provider(BaseModel):
         default=True
     )
 
+    order = models.IntegerField(
+        _('Orden en el que deberían aparecer los proveedores'),
+        default=1
+    )
+
     @property
     def comments(self):
         """Return all comments and score"""
@@ -74,6 +79,8 @@ class Provider(BaseModel):
     class Meta:
         verbose_name = _('Proveedor')
         verbose_name_plural = _('Proveedores')
+
+        ordering = ['order']
 
 
 class ProviderAddress(AddressBaseModel):

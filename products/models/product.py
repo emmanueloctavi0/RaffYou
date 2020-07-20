@@ -58,9 +58,18 @@ class Product(BaseModel):
         default=1
     )
 
+    price_default = models.DecimalField(
+        _('El precio por default que muestra en el inicio'),
+        default=1,
+        max_digits=6,
+        decimal_places=2
+    )
+
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = _('Producto')
         verbose_name_plural = _('Productos')
+
+        ordering = ['order']
