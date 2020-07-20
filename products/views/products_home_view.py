@@ -14,7 +14,6 @@ from core.utils import random_pk_list
 class ProductsHomeView(ListView):
     model = Product
     paginate_by = 6
-    ordering = ['created_at']
     queryset = Product.objects.filter(is_active=True)
     queryset_provider = Provider.objects.filter(is_active=True)
 
