@@ -5,5 +5,5 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from products.models import Product
 
-class ProductDetailView(LoginRequiredMixin, DetailView):
+class ProductDetailView(DetailView):
     model = Product

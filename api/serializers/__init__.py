@@ -1,1 +1,2 @@
 from api.serializers.product_serializer import ProductSerializer
+from api.serializers.provider_serializer import ProviderSerializer
