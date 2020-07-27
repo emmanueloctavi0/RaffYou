@@ -39,3 +39,19 @@ def volando_whatsapp(context, address_id):
     )
     msg = parse.quote(msg)
     return url + msg
+
+
+@register.simple_tag(takes_context=True)
+def order_whatsapp(context, product, tel):
+    """Build an url to send a whatsapp"""
+    tel = tel.replace(' ', '')
+    url = f'https://wa.me/52{tel}?text='
+
+    msg = (
+        f'Hola, me gustaría ordenar: \n\n'
+        f'{product}\n\n'
+        f'¡Gracias!'
+    )
+    msg = parse.quote(msg)
+
+    return url + msg
