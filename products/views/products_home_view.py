@@ -46,7 +46,9 @@ class ProductsHomeView(ListView):
             'id', 'image', 'name',
             'description',
         ).annotate(Avg('score__rate'))
-        # context['cats'] = ProductTag.objects.all()
+        context['categories'] = ProductTag.objects.all().values(
+            'id', 'value'
+        )
 
         if query:
             context['search'] = f'q={query}'
