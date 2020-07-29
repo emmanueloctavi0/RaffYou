@@ -7,6 +7,13 @@
 {% endblock%}
 
 {% block content %}
+    <div class="list-group list-group-horizontal-sm justify-content-center">
+        {% for category in categories %}
+            <a href="#" class="list-group-item list-group-item-action list-group-item-info">
+                {{ category.value }}
+            </a>
+        {% endfor %}
+    </div>
     <h1>La mejor comida del rumbo</h1>
     <!-- <small class="text-danger">Los precios de los productos podrían no ser reales, pregunta al repartido el precio exacto. !Estamos trajabando arduamente para tenerlos lo más acercados a la realidad!</small> -->
     <div class="card-columns">
