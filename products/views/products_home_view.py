@@ -32,6 +32,14 @@ class ProductsHomeView(ListView):
         except MultiValueDictKeyError:
             pass
 
+        try:
+            category_code = self.request.GET['cat']
+            queryset = queryset.filter(
+                tags__code=category_code
+            )
+        except MultiValueDictKeyError:
+            pass
+
         queryset = queryset.values(
             'id', 'name', 'image', 'provider__id',
             'provider__name', 'price_default'
@@ -47,7 +55,7 @@ class ProductsHomeView(ListView):
             'description',
         ).annotate(Avg('score__rate'))
         context['categories'] = ProductTag.objects.all().values(
-            'id', 'value'
+            'id', 'value', 'code'
         )
 
         if query:
