@@ -50,6 +50,7 @@ class ProductsHomeView(ListView):
     def get_context_data(self):
         context = super().get_context_data()
         query = self.request.GET.get('q')
+        category = self.request.GET.get('cat')
         providers = self.queryset_provider.values(
             'id', 'image', 'name',
             'description',
@@ -57,6 +58,9 @@ class ProductsHomeView(ListView):
         context['categories'] = ProductTag.objects.all().values(
             'id', 'value', 'code'
         )
+
+        if category:
+            context['search']=f'cat={category}'
 
         if query:
             context['search'] = f'q={query}'
