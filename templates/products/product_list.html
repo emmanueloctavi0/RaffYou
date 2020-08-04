@@ -7,7 +7,7 @@
 {% endblock%}
 
 {% block content %}
-    <h1 class="shadow-center-J">¿Qué se te antojó?</h1>
+    <h1>La mejor comida del rumbo</h1>
     <!-- <small class="text-danger">Los precios de los productos podrían no ser reales, pregunta al repartido el precio exacto. !Estamos trajabando arduamente para tenerlos lo más acercados a la realidad!</small> -->
     <div class="card-columns">
         {% for product in object_list %}
@@ -21,7 +21,7 @@
         </div>
     </div>
     <hr>
-    <h1 class="text-center shadow-center-J">¡Los mejores lugares!</h1>
+    <h3 class="text-center">¡Lo mejor de la región!</h3>
     <div class="card-columns">
         {% for provider in providers %}
             {% include 'products/provider_card.html' %}
