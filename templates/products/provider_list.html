@@ -7,14 +7,18 @@
 {% endblock%}
 
 {% block content %}
-    <h1 class="shadow-center-J">¡Para conocer!</h1>
+    <h1>Los mejores lugares para pedir comida</h1>
     <div class="card-columns">
         {% for provider in object_list %}
             {% include 'products/provider_card.html' %}
         {% endfor%}
     </div>
     {% include 'generals/paginator.html' %}
-
-    <!--Aquí iba la parte de productos-->
-
+    <hr>
+    <h3>Lo más rico...</h3>
+    <div class="card-deck">
+        {% for product in products %}
+            {% include 'products/product_card.html' %}
+        {% endfor %}
+    </div>
 {% endblock %}
