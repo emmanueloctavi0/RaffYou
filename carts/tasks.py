@@ -22,7 +22,7 @@ def create_order(address_dict, user_id, cart_id, comment, code=''):
         user_id=user_id,
         address=order_address,
         comment=comment,
-        shipping_price=15
+        shipping_price=20
     )
 
     cart = Cart.objects.get(id=cart_id)

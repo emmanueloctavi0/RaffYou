@@ -17,9 +17,9 @@
                             ${{ cart_product.sub_total_price }}
                         </li>
                     {% endfor %}
-                    <li>Costo de envío: $15</li>
+                    <li>Costo de envío: $20</li>
                 </ul>
-                <p class="price" id="price">Total: <span>${{ cart.total_price|add:"15" }}</span></p>
+                <p class="price" id="price">Total: <span>${{ cart.total_price|add:"20" }}</span></p>
                 <p type="button" class="text-info" data-toggle="modal" data-target="#modalCheckCode">
                     ¿Tienes un código de promoción?
                 </p>
@@ -67,7 +67,7 @@
                     <div class="form-row">
                         <div class="col">
                             <input name="code" type="text" class="form-control" required placeholder="Ingresa aquí tu código de descuento">
-                            <input type="hidden" name="price" value="{{ cart.total_price|add:"15" }}">
+                            <input type="hidden" name="price" value="{{ cart.total_price|add:"20" }}">
                         </div>
                     </div>
                 </div>
