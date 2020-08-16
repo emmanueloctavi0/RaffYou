@@ -1,7 +1,6 @@
-// ESTILOS NAVBAR
+// -------------------------------    NAVBAR   ----------------------------------------------
 
-
-///// ul del navegador /////////////////////////////////////////////////
+///// ul del navegador /////////
 .mgn-ul-navbar-J                            //Margin
 {
     margin-right: 0 !important;
@@ -13,7 +12,7 @@
     background: white;
     font-weight: bolder !important;
     border-radius: 7.5px;
-    -webkit-transition: all 500ms
+    transition: all 500ms
 }
 
 .efect-select-J:hover    // Efecto zoom
@@ -23,7 +22,7 @@
 
 .efect-select-J3   // Efecto retardo
 {
-    -webkit-transition: all 500ms
+    transition: all 500ms
 }
 
 // Barra de busqueda ////////////////
