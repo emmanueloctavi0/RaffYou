@@ -7,6 +7,10 @@ from celery import shared_task
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.conf import settings
+
+# Utilities
+import requests
 
 
 @shared_task
@@ -42,6 +46,18 @@ def send_email_text(subject, content, from_email, recipient_list):
         'subjects': subject,
         'recipients': recipient_list,
     }
+
+
+@shared_task
+def send_telegram_message(text):
+    data = {
+        'text': text,
+        'parse_mode': 'MarkdownV2',
+        'chat_id': settings.TELEGRAM_CHAT_ID
+    }
+    url = f'{settings.TELEGRAM_URL}/sendMessage'
+    res = requests.post(url, data=data)
+    return res.text
 
 
 @shared_task

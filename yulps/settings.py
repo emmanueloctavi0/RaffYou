@@ -240,6 +240,10 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
 
+# Telegram bot
+TELEGRAM_URL = os.getenv('TELEGRAM_URL')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+
 # Facebook
 AUTH_CLIENT_ID = os.getenv('AUTH_CLIENT_ID')
 AUTH_CLIENT_SECRET = os.getenv('AUTH_CLIENT_SECRET')
