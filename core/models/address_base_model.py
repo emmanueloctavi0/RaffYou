@@ -6,6 +6,9 @@ from django.utils.translation import gettext_lazy as _
 # Models
 from core.models import BaseModel
 
+# Utilities
+from core.utils import clean_word
+
 
 class AddressBaseModel(BaseModel):
 
@@ -75,13 +78,17 @@ class AddressBaseModel(BaseModel):
     @property
     def full_address(self):
         return (
-            f'*Calle:* {self.street_name}\n'
-            f'*Número:* {self.street_number}\n'
-            f'*Barrio:* {self.colony}\n'
-            f'*A la persona:* {self.name}\n'
-            f'*Teléfono:* {self.telephone}\n'
-            f'*Notas:* {self.references}\n'
+            f'*Solicitante:* {clean_word(self.name)}\n'
+            f'*Calle:* {clean_word(self.street_name)}\n'
+            f'*Número:* {clean_word(self.street_number)}\n'
+            f'*Barrio:* {clean_word(self.colony)}\n'
+            f'*Teléfono:* {clean_word(self.telephone)}\n'
+            f'*Notas:* {clean_word(self.references)}\n'
         )
+
+    @property
+    def clean_telephone(self):
+        return self.telephone.replace(' ', '').strip()
 
     def __str__(self):
         return f'{self.user} - {self.zip_code}'
