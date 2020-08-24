@@ -3,9 +3,11 @@
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 # Models
 from users.models import Address
+from carts.models import Cart
 
 
 class CartAddressView(LoginRequiredMixin, View):
@@ -34,6 +36,20 @@ class CartAddressView(LoginRequiredMixin, View):
                     'addresses': addresses,
                 }
             )
-        request.user.cart.address = address
-        request.user.cart.save()
+        try:
+            request.user.cart.address = address
+            request.user.cart.save()
+        except Cart.DoesNotExist:
+            messages.success(
+                request,
+                'No se completó el proceso porque tu carrito está vacio'
+            )
+            addresses = request.user.address_set.all()
+            return render(
+                request,
+                'carts/cart_address.html',
+                context={
+                    'addresses': addresses,
+                }
+            )
         return redirect('carts:cart-resume')
