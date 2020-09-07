@@ -37,7 +37,11 @@
             {% block usertools %}
             {% if has_permission %}
             <div id="user-tools">
-                <strong style="background-color: red; padding: 5px; border-radius: 8px;">Pedidos: {{ orders_count }}</strong>
+                <strong style="background-color: red; padding: 5px; border-radius: 8px;">
+                    <a href="/admin/orders/order/">
+                        Pedidos: {{ orders_count }}
+                    </a>
+                </strong>
                 {% block welcome-msg %}
                     {% trans 'Welcome,' %}
                     <strong>{% firstof user.get_short_name user.get_username %}</strong>.
