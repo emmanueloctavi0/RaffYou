@@ -1,9 +1,14 @@
 // -------------------------------    NAVBAR   ----------------------------------------------
 
+.collapse-responsive
+{
+    flex-wrap: wrap;
+}
+
 ///// ul del navegador /////////
 .mgn-ul-navbar-J                            //Margin
 {
-    margin-right: 0 !important;
+    flex-shrink: 0;
 }
 
 .efect-select-J2:hover          //Efecto hover retardo y cambio de background
@@ -30,6 +35,7 @@
 {
     margin-left: auto;
     margin-right: auto;
+    flex-wrap: nowrap;
 }
 
 .txt-center-J

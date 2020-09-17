@@ -9,5 +9,6 @@ app_name = 'orders'
 
 
 urlpatterns = [
-    path('', views.OrderListView.as_view(), name='order-list'),
+    path('', views.OrderListView.as_view(), name='order-list'), 
+    path('ayuda/', views.OrderHelpView.as_view(), name='order-help') 
 ]

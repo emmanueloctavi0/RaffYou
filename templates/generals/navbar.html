@@ -4,7 +4,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse collapse-responsive" id="navbarSupportedContent">
 
         <form class="form-inline mgn-centrado-J my-2 my-lg-0" action="{% url 'products:home' %}">
             <input name="q" class="form-control mr-sm-2 txt-center-J" type="search" placeholder="¿Antojo de algo?" aria-label="Search">
@@ -25,14 +25,14 @@
             {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link efect-select-J2" href="{% url 'carts:index' %}">
-                        Mi carrito
+                        Carrito
                         <span class="badge badge-pill badge-danger">{{ request.user.cart.count_items }}</span>
                     </a>
                 </li>
                 
                 <li class="nav-item">
                     <a class="nav-link efect-select-J2" href="{% url 'orders:order-list' %}">
-                        Mis pedidos
+                        Pedidos
                     </a>
                 </li>
 
@@ -45,6 +45,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'users:address-list' %}">Mis direcciones</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'orders:order-help' %}">Ayuda</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'users:logout' %}">Salir</a>
                     </div>
