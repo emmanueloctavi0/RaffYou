@@ -1,0 +1,38 @@
+// ----------------- BANNER -------------------------------------- 
+
+.banner-help
+{
+    height: 380px;
+    box-sizing: border-box !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/static/img/banner_2.png");
+}
+
+.banner-help p
+{
+    color: white;
+}
+
+.banner-help-title
+{
+    text-align: center;
+    width: 80%;
+}
+
+// --------------- HELP ---------------------------------------------
+
+.content-text
+{
+    display: flex;
+    text-align: justify;
+    flex-wrap: wrap;
+}
+
+.content-img
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+

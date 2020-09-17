@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_top %}
+    {% if not request.GET.q %}
+        {% include 'generals/banner-help.html' %}
+    {% endif %}
+{% endblock%}
+
+{% block content %}
+    <div class="container-help-area">
+        <div class="box-title-help">
+            <h1 class="shadow-center-J">¿Como hacer un pedido?</h1>
+            <p>
+                ¿No sabes como hacer un pedido en nuestra página? ¡No te preocupes! Pedir en RaffYou es muy fácil y te lo explicamos en 5 simples pasos, solo sigue las instrucciones:
+            </p>
+        </div>
+
+        <div class="box-text-help">
+            <h3>1. Busca</h3>
+
+            <div class="content-text">
+                <p>
+                    <strong>Pide de tus lugares favoritos:</strong> En la parte superior de la plataforma podrás visualizar un menú variado y en la parte inferior algunos establecimientos.
+                </p>
+    
+                <figure class="content-img">
+                    <img src="{% static 'img/help1.png' %}" alt="img-help1">
+                </figure>
+
+            </div>
+
+            <div class="content-text">
+                <p>
+                    Si buscas un lugar en específico vete a la sección de negocios que podrás encontrar en la barra de navegación.
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help2.png' %}" alt="img-help2">
+                </figure>
+            </div>
+
+            <div class="content-text">
+                <p>
+                    Para facilitar tu búsqueda puedes escribir en el buscador o presionar sobre los tags que se encuentran alrededor.
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help3.png' %}" alt="img-help3">
+                </figure>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="box-text-help">
+            <h3>2. Selecciona</h3>
+
+            <div class="content-text">
+                <p>
+                    ¡Puchale! sobre el platillo que más se te antoje, y visualiza toda la información del producto, descripción, horarios de atención, etc. 
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help4.png' %}" alt="img-help4">
+                </figure>
+            </div>
+
+            <div class="content-text">
+                <p>
+                    Usa el menú desplegable para ver todos los sabores disponibles y agrega la cantidad que deseas ordenar.
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help5.png' %}" alt="img-help5">
+                </figure>    
+            </div>
+
+            <div class="content-text">
+                <p>
+                    Ahora si, dale en “Agregar al carrito” y comienza a armar tu pedido, agrega todos los platillos que quieras.
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help6.png' %}" alt="img-help6">
+                </figure>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="box-text-help">
+            <h3>3. Arma tu carrito</h3>
+
+            <div class="content-text">
+                <p>
+                    Ahora vete al carrito y visualiza el resumen de tu pedido, en la parte inferior podrás ver el costo total de tu pedido más el costo de envío. Aquí también editar tu pedido agregando o eliminando productos antes de continuar con la compra.
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help7.png' %}" alt="img-help7">
+                </figure>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="box-text-help"> 
+            <h3>4. ¿A donde lo llevamos?</h3>
+
+            <div class="content-text">
+                <p>
+                    Danos una dirección con referencia y nosotros te lo llevamos. 
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help8.png' %}" alt="img-help8">
+                </figure>
+            </div>
+
+            <div class="content-text">
+                <p>
+                    Puedes administrar tus direcciones, estas se quedan guardadas en tu cuenta, si tienes más de una dirección, también puedes agregarla y seleccionarla sin complicaciones.
+                </p>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="box-text-help"> 
+            <h3>5. Confirma</h3>
+
+            <div class="content-text">
+                <p>
+                    Visualiza un resumen rápido de tu pedido, dirección y en comentarios adicionales, puedes dar detalles sobre tu pedido ¿Salsa extra? ¿Sin mostaza? ¿Sin cebolla? Todos estos detalles no los puedes dar aquí, ahora si dale en “Pedir” y listo nuestros repartidores tomaran el pedido y te lo llevaran hasta tu casa.
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help9.png' %}" alt="img-help9">
+                </figure>
+            </div>
+
+            <hr>
+        </div>
+
+        <div class="box-status">
+            <h3>Dale seguimiento a tu pedido</h3>
+
+            <div class="content-text">
+                <p>
+                    Para tu tranquilidad puedes darle seguimiento a tu pedido desde la sección “Pedidos”, ahí podrás ver en que etapa se encuentra tu pedido: Solicitado, Cocinando, En camino o Entregado y Pagado.
+                </p>
+
+                <figure class="content-img">
+                    <img src="{% static 'img/help10.png' %}" alt="img-help10">
+                </figure>
+            </div>
+
+            <p>
+                Esperamos que esta guía te haya ayudado, si aun continuas con dudas puedes escribirnos en nuestra página de facebook o puedes mandarnos un whats, lo que se te haga más cómodo C:
+            </p>
+
+        </div>
+    </div>
+
+{% endblock%}
