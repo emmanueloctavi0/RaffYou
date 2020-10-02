@@ -13,7 +13,7 @@ from core.utils import random_pk_list
 
 class ProviderListView(ListView):
     model = Provider
-    paginate_by = 6
+    paginate_by = 25
     queryset = Provider.objects.filter(is_active=True)
 
     def get_context_data(self):
