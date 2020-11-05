@@ -3,11 +3,16 @@
 
 {% block content_top %}
     {% if not request.GET.q %}
+<<<<<<< HEAD
         {% include 'generals/banner-help.html' %}
+=======
+    {% include 'generals/banner-help.html' %}
+>>>>>>> f1e7713db04e97a012edbce76547a3ed1283e306
     {% endif %}
 {% endblock%}
 
 {% block content %}
+<<<<<<< HEAD
     <div class="container-help-area">
         <div class="box-title-help">
             <h1 class="shadow-center-J">¿Como hacer un pedido?</h1>
@@ -163,4 +168,140 @@
         </div>
     </div>
 
+=======
+    <h1 class="shadow-center-J">¿Como hacer un pedido?</h1>
+    <p>
+        Pedir en RaffYou es muy fácil, solo sigue estos 5 pasos:
+    </p>
+
+    <h3>1. Busca</h3>
+    <p>
+        <strong>Pide de tus lugares favoritos:</strong>
+    </p>
+    <p>
+        En la parte superior de la plataforma podrás visualizar
+        un menú variado.
+    </p>
+    <p>En la parte inferior algunos establecimientos.</p>
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help1.png' %}" alt="img-help1">
+    </figure>
+
+    <p>
+        Si buscas un lugar en específico vete a la sección de <a class="text-link" href="{% url 'products:provider-list' %}" target="_blank">Negocios</a> que podrás encontrar en la barra de
+        navegación.
+    </p>
+
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help2.png' %}" alt="img-help2">
+    </figure>
+
+    <p>
+        Para facilitar tu búsqueda puedes escribir en el buscador o presionar sobre los tags que se encuentran
+        alrededor.
+    </p>
+
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help3.png' %}" alt="img-help3">
+    </figure>
+
+    <hr>
+
+    <h3>2. Selecciona</h3>
+    <p>
+        ¡Puchale! sobre el platillo que más se te antoje y visualiza toda la información del producto,
+        descripción, horarios de atención, etc.
+    </p>
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help4.png' %}" alt="img-help4">
+    </figure>
+
+    <p>
+        Usa el menú desplegable para ver todos los sabores disponibles y agrega la cantidad que deseas ordenar.
+    </p>
+
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help5.png' %}" alt="img-help5">
+    </figure>
+
+    <p>
+        Ahora si, dale en “Agregar al carrito” y comienza a armar tu pedido, agrega todos los platillos que
+        quieras.
+    </p>
+
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help6.png' %}" alt="img-help6">
+    </figure>
+    <hr>
+
+    <h3>3. Arma tu carrito</h3>
+
+    <div class="content-text">
+        <p>
+            En el carrito hay un resumen de tu pedido.
+        </p>
+        <p>
+            En la parte inferior podrás ver el costo total de tu pedido más el costo de envío.
+        </p>
+        <p>
+            Aquí también puedes editar tu pedido agregando o eliminando productos
+            antes de continuar con la compra.
+        </p>
+
+        <figure class="content-img text-center">
+            <img class="img-fluid" src="{% static 'img/help7.png' %}" alt="img-help7">
+        </figure>
+    </div>
+    <hr>
+
+    <h3>4. ¿A donde lo llevamos?</h3>
+    <p>
+        Danos una dirección con referencia y nosotros te lo llevamos.
+    </p>
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help8.png' %}" alt="img-help8">
+    </figure>
+    <p>
+        Puedes administrar tus direcciones, estas se quedan guardadas en tu cuenta.
+    </p>
+    <p>
+        Agrega los destinos que quieras y seleccionalas sin complicaciones.
+    </p>
+    <hr>
+
+    <h3>5. Confirma</h3>
+    <p>
+        <strong>¿Salsa extra? ¿Sin mostaza? ¿Sin cebolla?</strong> Todos estos detalles los puedes dar aquí.
+    </p>
+    <p>
+        Ahora si dale en “Pedir” y listo, te lo llevaremos hasta tu casa.
+    </p>
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help9.png' %}" alt="img-help9">
+    </figure>
+    <hr>
+
+    <h3>Dale seguimiento a tu pedido</h3>
+    <p>
+        Para tu tranquilidad puedes darle seguimiento a tu pedido desde la sección “Pedidos”.
+    </p>
+    <p>
+        Aquí podrás ver en
+        que etapa se encuentra tu pedido: Solicitado, Cocinando, En camino o Entregado y Pagado.
+    </p>
+    <figure class="content-img text-center">
+        <img class="img-fluid" src="{% static 'img/help10.png' %}" alt="img-help10">
+    </figure>
+
+    <p>
+        Esperamos que esta guía te haya ayudado.
+    </p>
+    <p>
+        Si aun continuas con dudas puedes escribirnos a nuestra página de
+        <a href="https://www.facebook.com/RaffYouOfficial/" class="text-link">Facebook</a> o puedes mandarnos un whats.
+    </p>
+    <p>
+        ¡Estamos para servirte! 😊
+    </p>
+>>>>>>> f1e7713db04e97a012edbce76547a3ed1283e306
 {% endblock%}

@@ -9,7 +9,9 @@
     </a>
         <div class="card-body text-center">
             <a href="{% url 'products:product-detail' product.id%}" class="card-title h5 text-primary font-weight-bold">{{ product.name }}</a>
-            <a href="{% url 'products:provider-detail' product.provider__id %}" class="card-text d-block text-info">{{ product.provider__name }}</a>
+            {% if product.provider__id %}
+                <a href="{% url 'products:provider-detail' product.provider__id %}" class="card-text d-block text-info">{{ product.provider__name }}</a>
+            {% endif %}
             <p class="card-text price">${{ product.price_default }}</p>
         </div>
     <!-- <form class="cart-product-widget text-center card-footer">
