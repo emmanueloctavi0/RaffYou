@@ -31,6 +31,7 @@ class Order(BaseModel):
         ON_WAY = 2, _('En camino')
         FINISHED = 3, _('Entregado / Pagado')
         CANCELLED = 4, _('Cancelado')
+        TAKED = 5, _('Cocinándose')
 
     user = models.ForeignKey(
         User,
@@ -104,7 +105,7 @@ def handler_status(sender, instance, created, **kwargs):
     """Send an email when the order status change"""
     from_email = 'Equipo RaffYou'
     recipient_list = [instance.user.email]
-    if instance.status == Order.Status.STARTED.value and created:
+    if instance.status == Order.Status.TAKED.value and created:
         subject = '¡Recibimos tu pedido!'
         template = 'mails/order_received.html'
     elif instance.status == Order.Status.FINISHED.value:
