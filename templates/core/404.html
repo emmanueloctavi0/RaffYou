@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-3 mt-5 mb-0 pt-3">
+    Ahhhh!! No pudimos encontrar esta página...
+</h1>
+
+<div class="text-center">
+    <a href="{% url 'products:home' %}" class="btn btn-primary btn-lg active my-3" role="button" aria-pressed="true">Regresar al home</a>
+    <img class="w-100" src="{{ url_gif }}" alt="">
+</div>
+{% endblock %}
