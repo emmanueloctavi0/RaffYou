@@ -1,10 +1,11 @@
 # Django
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Models
 from users.models import Address
 
-class AddressListView(ListView):
+class AddressListView(LoginRequiredMixin, ListView):
     model = Address
     paginate_by = 3
 
