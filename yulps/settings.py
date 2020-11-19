@@ -150,6 +150,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# 1 year
+SESSION_COOKIE_AGE = 31557600
+
 LOGIN_URL = reverse_lazy('users:login')
 LOGIN_REDIRECT_URL = reverse_lazy('products:home')
 

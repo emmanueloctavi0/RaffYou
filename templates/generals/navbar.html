@@ -29,10 +29,16 @@
             </li>
             
             {% if request.user.is_authenticated %}
-                
                 <li class="nav-item">
                     <a class="nav-link efect-select-J2" href="{% url 'orders:order-list' %}">
                         Pedidos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link efect-select-J2" href="{% url 'carts:index' %}">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge badge-pill badge-danger">{{ request.user.cart.count_items }}</span>
                     </a>
                 </li>
 

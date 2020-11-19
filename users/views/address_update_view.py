@@ -2,6 +2,7 @@
 # Django
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Models
 from users.models import Address
@@ -10,7 +11,7 @@ from users.models import Address
 from users.forms import AddressForm
 
 
-class AddressUpdateView(UpdateView):
+class AddressUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'users/address.html'
     form_class = AddressForm
     success_url = reverse_lazy('users:address-list')
