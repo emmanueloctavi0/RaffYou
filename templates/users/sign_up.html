@@ -6,12 +6,8 @@
     <p class="text-info">Para hacer pedidos es necesario que te registres en nuestra plataforma.</p>
     <a href="{% url 'users:auth_login' %}?{{ request.GET.urlencode }}" class="btn-facebook my-5"> Iniciar sesión con Facebook</a>
     <div class="card p-3">
-        {% url 'users:login' as url_login %}
-        {% if url_login == request.path %}
-            <h1>Iniciar sesión</h1>
-        {% else%}
-            <h1>Crea tu cuenta</h1>
-        {% endif %}
+        <h1>Registrate</h1>
+
         <form method="post">
             {% csrf_token %}
                 <div class="form-row">
@@ -24,6 +20,12 @@
                 <div class="form-row">
                     {% input_form form.password 6 %}
                     {% input_form form.password_confirmation 6 %}
+                </div>
+                <div class="form-row">
+                    {% input_form form.provider_name 12%}
+                </div>
+                <div class="form-row">
+                    {% textarea_form form.provider_description 12 %}
                 </div>
             <div class="text-center pt-2">
                 <button class="btn btn-success" type="submit">Enviar</button>
