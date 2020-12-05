@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load html_elements %}
+
+{% block content %}
+<div class="content-center">
+    <p class="text-info">Para hacer pedidos es necesario que te registres en nuestra plataforma.</p>
+    <a href="{% url 'users:auth_login' %}?{{ request.GET.urlencode }}" class="btn-facebook my-5"> Iniciar sesión con Facebook</a>
+    <div class="card p-3">
+        <h1>Iniciar sesión</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                {% input_form form.username 12 'email' %}
+            </div>
+            <div class="form-row">
+                {% input_form form.password 12 %}
+            </div>
+            <div class="text-center pt-2">
+                <button class="btn btn-success" type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
