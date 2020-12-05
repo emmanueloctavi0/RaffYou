@@ -6,7 +6,7 @@ register = template.Library()
 
 
 @register.inclusion_tag('generals/input_form.html', takes_context=True)
-def input_form(context, field, col=8, input_type='text'):
+def input_form(context, field, col=8, input_type=None):
 
     value = field.value() or ''
 
@@ -16,6 +16,9 @@ def input_form(context, field, col=8, input_type='text'):
         classes = 'is-valid'
     else:
         classes = ''
+
+    if not input_type:
+        input_type = field.field.widget.input_type
 
     return {
         'field': field,

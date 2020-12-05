@@ -41,6 +41,7 @@ class User(AbstractUser):
         max_length=150,
         help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
         blank=True,
+        null=True,
         error_messages={
             'unique': _("A user with that username already exists."),
         },
