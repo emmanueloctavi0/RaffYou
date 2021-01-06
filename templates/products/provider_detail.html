@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load user_tags %}
 
 {% block content %}
     <div class="row mt-5 text-center pt-4">
@@ -20,6 +21,12 @@
             <p class="m-0 text-muted">{{ provider.first_address.colony }}</p>
             <p class="m-0 text-muted">{{ provider.first_address.zip_code }} - {{ provider.first_address.city }}</p>
             <p class="m-0 text-muted">{{ provider.first_address.references }}</p>
+
+            <!--    Boton Whatsapp      -->
+            <br>
+            <a href="{% order_whatsapp object.name object.provider.first_address.telephone %}" target="_blank" class="btn btn-success mb-3"><i class="fab fa-whatsapp"></i> Pedir ahora: {{ object.provider.first_address.telephone }}</a> 
+            <br>
+
         </div>
     </div>
     <hr>
