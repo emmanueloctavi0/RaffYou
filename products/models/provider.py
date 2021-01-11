@@ -4,6 +4,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
+from django.contrib.auth import get_user_model
 
 # Models
 from core.models import AddressBaseModel, BaseModel
@@ -16,7 +17,7 @@ class Provider(BaseModel):
     """Provider model. A provider"""
     name = models.CharField(
         _('Nombre'),
-        max_length=100,
+        max_length=255,
         unique=True
     )
 
@@ -33,6 +34,7 @@ class Provider(BaseModel):
     rate = models.ManyToManyField(
         User,
         through='Score',
+        related_name='score_provider_set',
         blank=True
     )
 
@@ -50,6 +52,13 @@ class Provider(BaseModel):
     order = models.IntegerField(
         _('Orden en el que deberían aparecer los proveedores'),
         default=1
+    )
+
+    user = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True
     )
 
     @property

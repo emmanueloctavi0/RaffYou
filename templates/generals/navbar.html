@@ -17,31 +17,7 @@
                     Inicio
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link efect-select-J2" href="{% url 'orders:order-help' %}">
-                    ¿Cómo pedir?
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link efect-select-J2" href="{% url 'products:provider-list' %}">
-                    Negocios
-                </a>
-            </li>
-            
             {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link efect-select-J2" href="{% url 'orders:order-list' %}">
-                        Pedidos
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link efect-select-J2" href="{% url 'carts:index' %}">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="badge badge-pill badge-danger">{{ request.user.cart.count_items }}</span>
-                    </a>
-                </li>
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle efect-select-J2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {% if request.user.profile_picture %}
@@ -50,8 +26,6 @@
                         Cuenta
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'users:address-list' %}">Mis direcciones</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'orders:order-help' %}">Ayuda</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'users:logout' %}">Salir</a>

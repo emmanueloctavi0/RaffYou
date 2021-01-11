@@ -23,8 +23,7 @@ class SignUpView(FormView):
 
 
 class LoginViewCustom(LoginView):
-    template_name = 'users/sign_up.html'
-    # success_url = reverse_lazy('products:home')
+    template_name = 'users/login.html'
 
 
 def logout_view(request):
