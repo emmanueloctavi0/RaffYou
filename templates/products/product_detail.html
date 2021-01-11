@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load user_tags %}
+
 
 {% block content %}
     <div class="row mt-5 pt-3">
@@ -37,8 +39,10 @@
                     <label for="amount">Cantidad</label>
                     <input type="number" name="amount" class="form-control" id="amount" value="1">
                 </div>
+                <!-- Boton whatsapp -->
+                <a href="{% order_whatsapp object.name object.provider.first_address.telephone %}" target="_blank" class="btn btn-success mb-3"><i class="fab fa-whatsapp"></i> Pedir ahora: {{ object.provider.first_address.telephone }}</a> <br>
                 <!-- Boton agregar al carrito-->
-                <button type="submit" class="btn btn-primary text-white">Agregar al carrito</button>
+                <!-- <button type="submit" class="btn btn-primary text-white">Agregar al carrito</button> -->
             </form>
         </div>
     </div>
