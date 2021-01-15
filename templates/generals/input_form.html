@@ -2,7 +2,7 @@
     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
     <input
         name="{{ field.name }}"
-        type="{{ input_type }}"
+        type="{{ type }}"
         class="form-control {{ classes }}"
         id="{{ field.id_for_label }}"
         {% if field.field.required %} required {% endif %}
